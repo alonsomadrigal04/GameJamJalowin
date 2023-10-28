@@ -136,9 +136,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d7f2ba11a8279444ae1cd129d0773e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  walkSpeed: 1
+  runSpeed: 4
   minWalkTime: 1
   maxWalkTime: 3
-  minSpeed: 1
-  maxSpeed: 3
   minIdleTime: 1
   maxIdleTime: 3
+  player: {fileID: 0}
+  scared: 0

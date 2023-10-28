@@ -277,7 +277,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!58 &-2592106645471182031
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -308,4 +308,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   suiciding: 0
-  shooting_time: 0
+  firts_suicide: 0
+  after_suicide: 0
+  timer: 15
+  currentTime: 0
+  maxProgressBarWidth: 1
+  progressBar: {fileID: 0}

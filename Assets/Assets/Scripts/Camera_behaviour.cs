@@ -7,9 +7,13 @@ public class Camera_behaviour : MonoBehaviour
     private Transform target;
     public float smoothness = 5.0f; // Ajusta la suavidad del movimiento de la cámara
 
+    Camera cam;
+
     private void Start()
     {
         FindPlayer();
+
+        cam = GetComponent<Camera>();
     }
 
     void Update()
@@ -23,6 +27,8 @@ public class Camera_behaviour : MonoBehaviour
         {
             UpdateCameraPosition();
         }
+
+        PanicScreen();
     }
 
     private void FindPlayer()
@@ -41,4 +47,21 @@ public class Camera_behaviour : MonoBehaviour
         Vector3 smoothPosition = Vector3.Lerp(cameraPosition, targetPosition, smoothness * Time.deltaTime);
         transform.position = new Vector3(smoothPosition.x, smoothPosition.y, cameraPosition.z);
     }
+
+    private void PanicScreen()
+    {
+        if (target != null)
+        {
+            Player_behaviour playerBehavior = target.GetComponent<Player_behaviour>();
+            if (playerBehavior != null)
+            {
+                // Calcula el factor de escala en función del tiempo restante del jugador.
+                float scale = Mathf.Lerp(5.0f, 15.0f, playerBehavior.currentTime / playerBehavior.timer_suicideMax);
+
+                // Ajusta el tamaño de la cámara.
+                cam.orthographicSize = scale;
+            }
+        }
+    }
+
 }

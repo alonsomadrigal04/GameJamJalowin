@@ -6,15 +6,15 @@ public class Camera_behaviour : MonoBehaviour
 {
     private Transform target;
     public float smoothness = 5.0f; // Ajusta la suavidad del movimiento de la cámara
-    [SerializeField] float minZoom = 0.5f;
-    [SerializeField] float maxZoom = 15.0f;
+    public float maxShakeAmount = 2.0f; // Ajusta la intensidad máxima de la sacudida
+    public float shakeSpeed = 1.0f; // Ajusta la velocidad de la sacudida
 
-    Camera cam;
+    private Camera cam;
+    private float shakeAmount = 0.0f;
 
     private void Start()
     {
         FindPlayer();
-
         cam = GetComponent<Camera>();
     }
 
@@ -48,6 +48,16 @@ public class Camera_behaviour : MonoBehaviour
         Vector3 targetPosition = target.position;
         Vector3 smoothPosition = Vector3.Lerp(cameraPosition, targetPosition, smoothness * Time.deltaTime);
         transform.position = new Vector3(smoothPosition.x, smoothPosition.y, cameraPosition.z);
+
+        if (shakeAmount > 0)
+        {
+            // Aplica la sacudida a la posición de la cámara
+            Vector2 shakeOffset = Random.insideUnitCircle * shakeAmount;
+            transform.position += new Vector3(shakeOffset.x, shakeOffset.y, 0);
+
+            // Reduce gradualmente la intensidad de la sacudida
+            shakeAmount -= Time.deltaTime * shakeSpeed;
+        }
     }
 
     private void PanicScreen()
@@ -58,12 +68,14 @@ public class Camera_behaviour : MonoBehaviour
             if (playerBehavior != null)
             {
                 // Calcula el factor de escala en función del tiempo restante del jugador.
-                float scale = Mathf.Lerp(minZoom, maxZoom, playerBehavior.currentTime / playerBehavior.timer_suicideMax);
+                float scale = Mathf.Lerp(5.0f, 15.0f, playerBehavior.currentTime / playerBehavior.timer_suicideMax);
 
                 // Ajusta el tamaño de la cámara.
                 cam.orthographicSize = scale;
+
+                // Aumenta la intensidad de la sacudida en función del factor de escala
+                shakeAmount = maxShakeAmount * (1.0f - (scale - 5.0f) / 10.0f);
             }
         }
     }
-
 }

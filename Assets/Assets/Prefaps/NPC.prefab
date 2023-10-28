@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8086198807719937326}
   m_Layer: 0
   m_Name: NPC
-  m_TagString: Untagged
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -142,5 +142,8 @@ MonoBehaviour:
   maxWalkTime: 3
   minIdleTime: 1
   maxIdleTime: 3
-  player: {fileID: 0}
+  minRunningTime: 3
+  maxRunningTime: 7
+  safeDistance: 20
+  draggedMinDistance: 1
   scared: 0

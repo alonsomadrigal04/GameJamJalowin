@@ -227,6 +227,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -2895217245912829260, guid: de4ffbb173b66544e9b635f93f2ef031, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 1704912779813426752, guid: de4ffbb173b66544e9b635f93f2ef031, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -334,6 +338,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2794126296169741688, guid: 4343a4228e5477345a2474d15feb71e8, type: 3}
       propertyPath: m_Name
+      value: NPC
+      objectReference: {fileID: 0}
+    - target: {fileID: 2794126296169741688, guid: 4343a4228e5477345a2474d15feb71e8, type: 3}
+      propertyPath: m_TagString
       value: NPC
       objectReference: {fileID: 0}
     m_RemovedComponents: []

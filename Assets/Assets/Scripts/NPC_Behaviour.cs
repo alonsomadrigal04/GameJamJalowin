@@ -11,6 +11,7 @@ public class NPC_Behaviour : MonoBehaviour
     [SerializeField] GameObject player;
 
     Rigidbody2D rb;
+    Player_behaviour scPlayer;
     Transform tfPlayer;
     Vector2 dir;
     Vector2 runAwayDir;
@@ -24,6 +25,7 @@ public class NPC_Behaviour : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        scPlayer = player.GetComponent<Player_behaviour>();
         tfPlayer = player.GetComponent<Transform>();
         moveTimer = Random.Range(minIdleTime, maxIdleTime);
     }
@@ -63,7 +65,7 @@ public class NPC_Behaviour : MonoBehaviour
         //Asignar valores a variables según la situación
 
         currentSpeed = scared ? runSpeed : walkSpeed;
-        maxSpeed = isDragged ? tfPlayer.moveSpeed : (isWalking ? currentSpeed : 0);
+        maxSpeed = isDragged ? scPlayer.moveSpeed : (isWalking ? currentSpeed : 0);
 
         //Limitar velocidad
 

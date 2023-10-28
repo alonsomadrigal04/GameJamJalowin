@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 025f696bba8b42d4896e09f260e9b39b
+guid: cd690b130150b6f48953067b390c002b
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -45,8 +45,8 @@ TextureImporter:
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 7
-  spritePivot: {x: 0.5, y: 0}
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
@@ -105,7 +105,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: NPC_Walk-Sheet_0
+      name: NPC_Idle-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -119,14 +119,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3abd0dbeb237b4845b72cfdbac007ab3
-      internalID: 103504895
+      spriteID: 7dcf0e684b9600a48877530958562230
+      internalID: 1547671194
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NPC_Walk-Sheet_1
+      name: NPC_Idle-Sheet_1
       rect:
         serializedVersion: 2
         x: 20
@@ -140,14 +140,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6730e861825358342b3925f443dcd68c
-      internalID: -952145336
+      spriteID: 9417fc9b3186df74a8316661bfdbcfaf
+      internalID: -740227089
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NPC_Walk-Sheet_2
+      name: NPC_Idle-Sheet_2
       rect:
         serializedVersion: 2
         x: 40
@@ -161,14 +161,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 57c1b85294a46724ba5e0229e2904ff9
-      internalID: 363846521
+      spriteID: d0704409b9531c24fae500812ce05ee5
+      internalID: -563341021
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NPC_Walk-Sheet_3
+      name: NPC_Idle-Sheet_3
       rect:
         serializedVersion: 2
         x: 60
@@ -182,14 +182,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ce3bf41936da66c4887ffbda88fd5840
-      internalID: -1819858345
+      spriteID: 1746c78d7e3f46441ae2fd1e23db51b0
+      internalID: 11381925
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NPC_Walk-Sheet_4
+      name: NPC_Idle-Sheet_4
       rect:
         serializedVersion: 2
         x: 80
@@ -203,14 +203,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 838433c8e6cc18143b6942f55801e2db
-      internalID: 1666806828
+      spriteID: 709e3a2cc72231b4582d3fa633134c81
+      internalID: -284915371
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NPC_Walk-Sheet_5
+      name: NPC_Idle-Sheet_5
       rect:
         serializedVersion: 2
         x: 100
@@ -224,50 +224,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0e979fccf491cd54398b2649f96fcfda
-      internalID: 1426106415
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: NPC_Walk-Sheet_6
-      rect:
-        serializedVersion: 2
-        x: 120
-        y: 0
-        width: 20
-        height: 20
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8b6dc3bf754b65948ab3ef9a23e29741
-      internalID: -2096613539
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: NPC_Walk-Sheet_7
-      rect:
-        serializedVersion: 2
-        x: 140
-        y: 0
-        width: 20
-        height: 20
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3251e0826e99ef945b0ee0db4309b3cc
-      internalID: 1429006348
+      spriteID: c719586338004904682d248a08e74d44
+      internalID: 780560577
       vertices: []
       indices: 
       edges: []
@@ -283,14 +241,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      NPC_Walk-Sheet_2: 363846521
-      NPC_Walk-Sheet_4: 1666806828
-      NPC_Walk-Sheet_0: 103504895
-      NPC_Walk-Sheet_5: 1426106415
-      NPC_Walk-Sheet_7: 1429006348
-      NPC_Walk-Sheet_6: -2096613539
-      NPC_Walk-Sheet_3: -1819858345
-      NPC_Walk-Sheet_1: -952145336
+      NPC_Idle-Sheet_3: 11381925
+      NPC_Idle-Sheet_0: 1547671194
+      NPC_Idle-Sheet_4: -284915371
+      NPC_Idle-Sheet_2: -563341021
+      NPC_Idle-Sheet_5: 780560577
+      NPC_Idle-Sheet_1: -740227089
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

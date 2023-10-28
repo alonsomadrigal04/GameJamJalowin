@@ -61,7 +61,7 @@ public class Menu_Behaviour : MonoBehaviour
         // Fade In de la música de metal
         audioSource.clip = metalMusic;
         audioSource.Play();
-        while (audioSource.volume < 1)
+        while (audioSource.volume < 0.1)
         {
             audioSource.volume += fadeSpeed * Time.deltaTime;
             yield return null;

@@ -1,33 +1,47 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class NPC_Behaviour : MonoBehaviour
 {
     [SerializeField] float walkSpeed = 1.0f;
     [SerializeField] float runSpeed = 4.0f;
+    [SerializeField] float dragSpeed = 10.0f;
     [SerializeField] float minWalkTime = 1.0f;
     [SerializeField] float maxWalkTime = 3.0f;
     [SerializeField] float minIdleTime = 1.0f;
     [SerializeField] float maxIdleTime = 3.0f;
-    [SerializeField] GameObject player;
+    [SerializeField] float minRunningTime = 3.0f;
+    [SerializeField] float maxRunningTime = 7.0f;
+    [SerializeField] float safeDistance = 20.0f;
+    [SerializeField] float draggedMinDistance = 1.0f;
 
+    GameObject player;
     Rigidbody2D rb;
     Player_behaviour scPlayer;
     Transform tfPlayer;
     Vector2 dir;
     Vector2 runAwayDir;
+    int leftOrRight = -1;
+    bool isSeparating = false;
+    float escapeMult = 1.5f;
     float currentSpeed;
     float maxSpeed;
     float moveTimer;
     bool isWalking = false;
     bool isDragged = false;
-    public bool scared = false;
+    [HideInInspector] public bool scared = false;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        scPlayer = player.GetComponent<Player_behaviour>();
-        tfPlayer = player.GetComponent<Transform>();
+        player = GameObject.FindGameObjectWithTag("Player");
         moveTimer = Random.Range(minIdleTime, maxIdleTime);
+
+        if (player != null)
+        {
+            scPlayer = player.GetComponent<Player_behaviour>();
+            tfPlayer = player.GetComponent<Transform>();
+        }
     }
 
     void Update()
@@ -37,6 +51,14 @@ public class NPC_Behaviour : MonoBehaviour
 
     void UpdateMovement()
     {
+        //Si se acaba el tiempo de miedo, el npc se desasusta y entra en modo andar
+
+        if (moveTimer <= 0 && scared)
+        {
+            scared = false;
+            moveTimer = Random.Range(minWalkTime, maxWalkTime);
+        }
+
         //Arranque y detención
 
         if (scared) rb.velocity = runAwayDir * currentSpeed;
@@ -60,12 +82,48 @@ public class NPC_Behaviour : MonoBehaviour
                 rb.velocity = dir * currentSpeed;
             }
         }
-        else moveTimer -= Time.deltaTime;
+
+        moveTimer -= Time.deltaTime;
+
+        //Determinar si el jugador está cerca
+
+        float dist2Player;
+        dist2Player = Vector2.Distance(transform.position, tfPlayer.position);
+        if (dist2Player < draggedMinDistance) isDragged = true;
+        else if (dist2Player >= draggedMinDistance + escapeMult) isDragged = false;
+
+        //Apartarse si está con el jugador
+
+        if (isDragged && !scared)
+        {
+            if (leftOrRight == -1) leftOrRight = Random.Range(0, 2);
+            isWalking = true;
+            if (moveTimer <= 0) moveTimer = Random.Range(minWalkTime, maxWalkTime);
+
+            //Aleatorio si se aparta a la derecha o la izquierda
+
+            Transform tfNPC = gameObject.GetComponent<Transform>();
+            Vector2 dir2Player = (tfPlayer.position - tfNPC.position).normalized;
+
+            if (!isSeparating)
+            {
+                isSeparating = true;
+                if (leftOrRight == 0) dir = new Vector2(dir2Player.y, -dir2Player.x);
+                else if (leftOrRight == 1) dir = new Vector2(-dir2Player.y, dir2Player.x);
+            }
+
+            rb.velocity = dir * currentSpeed;
+        }
+        else
+        {
+            leftOrRight = -1;
+            isSeparating = false;
+        }
 
         //Asignar valores a variables según la situación
 
-        currentSpeed = scared ? runSpeed : walkSpeed;
-        maxSpeed = isDragged ? scPlayer.moveSpeed : (isWalking ? currentSpeed : 0);
+        currentSpeed = scared ? runSpeed : isDragged ? dragSpeed : walkSpeed;
+        maxSpeed = isWalking ? currentSpeed : 0;
 
         //Limitar velocidad
 
@@ -78,7 +136,7 @@ public class NPC_Behaviour : MonoBehaviour
     public void GetScared()
     {
         scared = true;
-        moveTimer = Random.Range(minWalkTime, maxWalkTime);
+        moveTimer = Random.Range(minRunningTime, maxRunningTime);
         isWalking = true;
 
         Transform tfNPC = gameObject.GetComponent<Transform>();
@@ -90,10 +148,4 @@ public class NPC_Behaviour : MonoBehaviour
     {
         Destroy(gameObject);
     }
-
-    //Si choca con el jugador, se puede arrastrar a la velocidad de este
-    void OnCollisionEnter(Collision other) { if (other.gameObject.CompareTag("Player")) isDragged = true; }
-    //Si no choca, no
-    void OnCollisionExit(Collision other) { if (other.gameObject.CompareTag("Player")) isDragged = false; }
-
 }

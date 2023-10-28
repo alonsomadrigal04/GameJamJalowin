@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Alonso's_Scene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: 8485251b06eb0d34fba7e9f1d8c621c0
+  - enabled: 1
+    path: Assets/Scenes/winScreen.unity
+    guid: ee7017c81b587b2419d6b457dd898309
   m_configObjects: {}

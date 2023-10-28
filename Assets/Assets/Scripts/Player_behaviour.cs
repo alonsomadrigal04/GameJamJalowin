@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Player_behaviour : MonoBehaviour
 {
-
     // ------- MOVEMENT -------
     [SerializeField] float moveSpeed;
 
@@ -13,30 +12,33 @@ public class Player_behaviour : MonoBehaviour
     public float shooting_time;
     private List<GameObject> npcsInScreen = new List<GameObject>();
 
-
-
     // ------- RIGIDBODY -------
-    private Rigidbody2D rb;       
+    private Rigidbody2D rb;
+    private SpriteRenderer spriteRenderer;
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-   
+        rb = GetComponent <Rigidbody2D>();
+        spriteRenderer = GetComponent <SpriteRenderer>();
     }
 
     void Update()
     {
-        
         MovePlayer();
-
     }
 
     void MovePlayer()
     {
-        if (!suiciding) 
-        { 
+        if (!suiciding)
+        {
             Vector2 dir = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
             rb.velocity = dir.normalized * moveSpeed;
+
+            if (dir != Vector2.zero)
+            {
+                float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+                transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            }
 
             if (Input.anyKeyDown)
             {
@@ -48,7 +50,7 @@ public class Player_behaviour : MonoBehaviour
             }
         }
     }
-    
+
     void Suicide()
     {
         StartCoroutine(MiMetodoEspera(shooting_time));
@@ -72,13 +74,11 @@ public class Player_behaviour : MonoBehaviour
 
     IEnumerator MiMetodoEspera(float time)
     {
-        if(suiciding)
+        if (suiciding)
         {
             Debug.Log("Antes de morir");
             yield return new WaitForSeconds(time); // Espera durante 2 segundos
-            Debug.Log("Despues de morir");
+            Debug.Log("Después de morir");
         }
-        
     }
-
 }

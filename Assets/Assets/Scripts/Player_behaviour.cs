@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Player_behaviour : MonoBehaviour
 {
     // ------- MOVEMENT -------
-    [SerializeField] float moveSpeed;
+    public float moveSpeed;
 
     // ------- SUICIDE -------
     public bool suiciding;
@@ -16,12 +16,11 @@ public class Player_behaviour : MonoBehaviour
     private bool firstTime = true;
 
     // ------- SUICIDE_BAR -------
-    [SerializeField] float timer = 15f; 
+    [SerializeField] float timer; 
     public float currentTime;
     [SerializeField] float maxProgressBarWidth = 1.0f;
     [SerializeField] Image progressBar;
-
-
+    [SerializeField] float timer_suicideMax;
 
     // ------- RIGIDBODY -------
     private Rigidbody2D rb;
@@ -46,6 +45,7 @@ public class Player_behaviour : MonoBehaviour
     {
         if (!suiciding)
         {
+
             Vector2 dir = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
             rb.velocity = dir.normalized * moveSpeed;
 
@@ -55,16 +55,15 @@ public class Player_behaviour : MonoBehaviour
                 transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
             }
 
-            if (Input.anyKeyDown)
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-                if (!Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.D))
-                {
-                    Suicide();
-                    currentTime = 0;
-                }
+                rb.velocity = new Vector2(0, 0);
+                Suicide();
             }
         }
+
     }
+
 
     void Suicide()
     {
@@ -84,26 +83,29 @@ public class Player_behaviour : MonoBehaviour
     {
         if (!suiciding)
         {
-            currentTime += Time.deltaTime;
-
-            // Calcula el progreso como un valor entre 0 y 1 en función del tiempo restante.
-            float progress = Mathf.Clamp01(1 - currentTime / timer);
-
-            // Calcula el ancho actual de la barra de progreso.
-            float currentWidth = maxProgressBarWidth * progress;
-
-            progressBar.transform.localScale = new Vector3(currentWidth, progressBar.transform.localScale.y, progressBar.transform.localScale.z);
-
-            
-            // Comprueba si el temporizador ha terminado
-            if (currentTime >= timer)
+            if (!suiciding)
             {
-                suiciding = true;
-                Suicide();
-                currentTime = 0;
+                currentTime -= Time.deltaTime; // Resta el tiempo en lugar de sumarlo
+
+                // Calcula el progreso como un valor entre 0 y 1 en función del tiempo restante.
+                float progress = Mathf.Clamp01(currentTime / timer_suicideMax);
+
+                // Calcula el ancho actual de la barra de progreso.
+                float currentWidth = maxProgressBarWidth * progress; // Asigna el valor a currentWidth
+
+                progressBar.transform.localScale = new Vector3(currentWidth, progressBar.transform.localScale.y, progressBar.transform.localScale.z);
+
+                // Comprueba si el temporizador ha terminado
+                if (currentTime <= 0)
+                {
+                    suiciding = true;
+                    Suicide();
+                    currentTime = timer; // Reinicia el tiempo
+                }
             }
         }
     }
+
 
 
 
@@ -140,7 +142,11 @@ public class Player_behaviour : MonoBehaviour
                 suiciding = false;
                 foreach (GameObject npc in npcsInScreen)
                 {
-                    //npc.scared = true;
+                    NPC_Behaviour npc_script = npc.GetComponent<NPC_Behaviour>();
+                    npc_script.GetScared(new Vector2(gameObject.transform.position.x, gameObject.transform.position.y);
+
+                    currentTime = Mathf.Clamp(currentTime, 0, timer_suicideMax - 1);
+                    currentTime += (npcsInScreen.Count/2);
                 }
             }
             else

@@ -4,34 +4,41 @@ using UnityEngine;
 
 public class Camera_behaviour : MonoBehaviour
 {
-    private Transform target; 
+    private Transform target;
+    public float smoothness = 5.0f; // Ajusta la suavidad del movimiento de la cámara
+
+    private void Start()
+    {
+        FindPlayer();
+    }
 
     void Update()
     {
-
         if (target == null)
         {
-            GameObject playerObject = GameObject.FindWithTag("Player");
-            if (playerObject != null)
-            {
-                target = playerObject.transform;
-            }
+            FindPlayer();
         }
 
-        // Si se encontró un objetivo, seguirlo
         if (target != null)
         {
-            // Obtener la posición actual de la cámara
-            Vector3 cameraPosition = transform.position;
-
-            // Obtener la posición del objetivo
-            Vector3 targetPosition = target.position;
-
-            // Establecer la posición de la cámara para que siga al objetivo
-            cameraPosition.x = targetPosition.x;
-            cameraPosition.y = targetPosition.y;
-            transform.position = cameraPosition;
+            UpdateCameraPosition();
         }
     }
-}
 
+    private void FindPlayer()
+    {
+        GameObject playerObject = GameObject.FindWithTag("Player");
+        if (playerObject != null)
+        {
+            target = playerObject.transform;
+        }
+    }
+
+    private void UpdateCameraPosition()
+    {
+        Vector3 cameraPosition = transform.position;
+        Vector3 targetPosition = target.position;
+        Vector3 smoothPosition = Vector3.Lerp(cameraPosition, targetPosition, smoothness * Time.deltaTime);
+        transform.position = new Vector3(smoothPosition.x, smoothPosition.y, cameraPosition.z);
+    }
+}

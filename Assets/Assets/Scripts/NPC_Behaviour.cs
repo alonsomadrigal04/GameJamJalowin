@@ -15,7 +15,7 @@ public class NPC_Behaviour : MonoBehaviour
     float maxSpeed;
     float moveTimer;
     bool isWalking = false;
-    bool scared = false;
+    public bool scared = false;
 
     void Start()
     {

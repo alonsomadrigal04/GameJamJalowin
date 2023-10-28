@@ -17,7 +17,7 @@ public class Player_behaviour : MonoBehaviour
     private bool firstTime = true;
 
     // ------- SUICIDE_BAR -------
-    [SerializeField] float timer; 
+    [SerializeField] float timer;
     public float currentTime;
     [SerializeField] float maxProgressBarWidth = 1.0f;
     [SerializeField] Image progressBar;
@@ -36,13 +36,19 @@ public class Player_behaviour : MonoBehaviour
     // ------- GAME_LOGIC -------
     public bool gameOver = false;
 
+    // ------- SOUNDS -------
+    public AudioSource audioSource;
+    public AudioClip deathMusic;
+    public AudioClip[] scaredSounds; // Array de efectos de sonido de NPC asustados
+    private List<int> playedSoundIndices = new List<int>(); // Lista para realizar un seguimiento de los índices de sonidos ya reproducidos
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponent < SpriteRenderer>();
         currentTime = timer_suicideMax;
 
-        if (scMenu.gameStarted) 
+        if (scMenu.gameStarted)
         {
             currentTime = timer_suicideMax;
             progressBar.gameObject.SetActive(true);
@@ -68,14 +74,16 @@ public class Player_behaviour : MonoBehaviour
     {
         if (!suiciding)
         {
-
-            Vector2 dir = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-            rb.velocity = dir.normalized * moveSpeed;
-
-            if (dir != Vector2.zero)
+            if (scMenu.gameStarted)
             {
-                float angle = Mathf.Atan2(-dir.x, dir.y) * Mathf.Rad2Deg;
-                transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+                Vector2 dir = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+                rb.velocity = dir.normalized * moveSpeed;
+
+                if (dir != Vector2.zero)
+                {
+                    float angle = Mathf.Atan2(-dir.x, dir.y) * Mathf.Rad2Deg;
+                    transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+                }
             }
 
             if (Input.GetKeyDown(KeyCode.Space))
@@ -84,9 +92,7 @@ public class Player_behaviour : MonoBehaviour
                 Suicide();
             }
         }
-
     }
-
 
     public void Suicide()
     {
@@ -108,31 +114,27 @@ public class Player_behaviour : MonoBehaviour
         {
             if (!suiciding)
             {
-                    currentTime -= Time.deltaTime; 
+                currentTime -= Time.deltaTime;
 
-                    // Calcula el progreso como un valor entre 0 y 1 en función del tiempo restante.
-                    float progress = Mathf.Clamp01(currentTime / timer_suicideMax);
+                // Calcula el progreso como un valor entre 0 y 1 en función del tiempo restante.
+                float progress = Mathf.Clamp01(currentTime / timer_suicideMax);
 
-                    // Calcula el ancho actual de la barra de progreso.
-                    float currentWidth = maxProgressBarWidth * progress; // Asigna el valor a currentWidth
+                // Calcula el ancho actual de la barra de progreso.
+                float currentWidth = maxProgressBarWidth * progress; // Asigna el valor a currentWidth
 
-                    progressBar.transform.localScale = new Vector3(currentWidth, progressBar.transform.localScale.y, progressBar.transform.localScale.z);
+                progressBar.transform.localScale = new Vector3(currentWidth, progressBar.transform.localScale.y, progressBar.transform.localScale.z);
 
-                    // Comprueba si el temporizador ha terminado
-                    if (currentTime <= 0)
-                    {
-                        suiciding = true;
-                        Suicide();
-                        currentTime = timer; // Reinicia el tiempo
-                        progressBar.gameObject.SetActive(true);
-                    }
+                // Comprueba si el temporizador ha terminado
+                if (currentTime <= 0)
+                {
+                    suiciding = true;
+                    Suicide();
+                    currentTime = timer; // Reinicia el tiempo
+                    progressBar.gameObject.SetActive(true);
+                }
             }
-
         }
     }
-
-
-
 
     void CollectNPCsInScreen()
     {
@@ -174,8 +176,25 @@ public class Player_behaviour : MonoBehaviour
                     NPC_Behaviour npc_script = npc.GetComponent<NPC_Behaviour>();
                     npc_script.GetScared();
 
+                    int randomSoundIndex;
+                    do
+                    {
+                        randomSoundIndex = Random.Range(0, scaredSounds.Length);
+                    } while (playedSoundIndices.Contains(randomSoundIndex));
+
+                    // Agrega el índice del sonido a la lista de sonidos reproducidos
+                    playedSoundIndices.Add(randomSoundIndex);
+
+                    // Asegúrate de que la lista de índices de sonidos no crezca indefinidamente
+                    if (playedSoundIndices.Count >= scaredSounds.Length)
+                    {
+                        playedSoundIndices.Clear();
+                    }
+
+                    AudioSource.PlayClipAtPoint(scaredSounds[randomSoundIndex], npc.transform.position);
+
                     currentTime = Mathf.Clamp(currentTime, 0, timer_suicideMax - 2);
-                    currentTime += (npcsInScreen.Count/2);
+                    currentTime += (npcsInScreen.Count / 2);
                 }
             }
             else
@@ -186,7 +205,6 @@ public class Player_behaviour : MonoBehaviour
 
             Debug.Log("Después de morir");
         }
-
     }
 
     private void CheckWin()
@@ -197,14 +215,10 @@ public class Player_behaviour : MonoBehaviour
             SceneManager.LoadScene("winscreen");
         }
     }
+
     private bool AreAllNPCsCollected()
     {
         GameObject[] allNpcs = GameObject.FindGameObjectsWithTag("NPC");
         return allNpcs.Length == 0;
     }
-    void GameOver()
-    {
-        Destroy(gameObject);  
-    }
-
 }

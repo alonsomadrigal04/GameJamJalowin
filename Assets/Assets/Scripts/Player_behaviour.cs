@@ -21,6 +21,7 @@ public class Player_behaviour : MonoBehaviour
     public float currentTime;
     [SerializeField] float maxProgressBarWidth = 1.0f;
     [SerializeField] Image progressBar;
+    [SerializeField] Image cristal;
     public float timer_suicideMax;
 
     // ------- RIGIDBODY -------
@@ -166,6 +167,7 @@ public class Player_behaviour : MonoBehaviour
                 suiciding = false;
 
                 progressBar.gameObject.SetActive(true);
+                cristal.gameObject.SetActive(true);
 
                 foreach (GameObject npc in npcsInScreen)
                 {

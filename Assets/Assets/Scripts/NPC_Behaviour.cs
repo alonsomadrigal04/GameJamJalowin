@@ -75,7 +75,7 @@ public class NPC_Behaviour : MonoBehaviour
         rb.velocity = new Vector2(limitedXSpeed, limitedYSpeed);
     }
 
-    void GetScared()
+    public void GetScared()
     {
         scared = true;
         moveTimer = Random.Range(minWalkTime, maxWalkTime);

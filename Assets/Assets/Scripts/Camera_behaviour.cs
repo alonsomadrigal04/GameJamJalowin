@@ -6,8 +6,8 @@ public class Camera_behaviour : MonoBehaviour
 {
     private Transform target;
     public float smoothness = 5.0f; // Ajusta la suavidad del movimiento de la cámara
-    public float maxShakeAmount = 2.0f; // Ajusta la intensidad máxima de la sacudida
-    public float shakeSpeed = 1.0f; // Ajusta la velocidad de la sacudida
+    public float maxShakeAmount = 0.005f; // Ajusta la intensidad máxima de la sacudida (valor reducido)
+    public float shakeSpeed = 0.5f; // Ajusta la velocidad de la sacudida (valor reducido)
 
     private Camera cam;
     private float shakeAmount = 0.0f;
@@ -67,14 +67,14 @@ public class Camera_behaviour : MonoBehaviour
             Player_behaviour playerBehavior = target.GetComponent<Player_behaviour>();
             if (playerBehavior != null)
             {
-                // Calcula el factor de escala en función del tiempo restante del jugador.
+                // Calcula el factor de escala en función de currentTime.
                 float scale = Mathf.Lerp(5.0f, 15.0f, playerBehavior.currentTime / playerBehavior.timer_suicideMax);
 
                 // Ajusta el tamaño de la cámara.
                 cam.orthographicSize = scale;
 
-                // Aumenta la intensidad de la sacudida en función del factor de escala
-                shakeAmount = maxShakeAmount * (1.0f - (scale - 5.0f) / 10.0f);
+                // Aumenta la intensidad de la sacudida en función de currentTime.
+                shakeAmount = Mathf.Lerp(0, maxShakeAmount, 1.0f - playerBehavior.currentTime / playerBehavior.timer_suicideMax);
             }
         }
     }

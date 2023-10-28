@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8556935178107410728}
   - component: {fileID: 8668635143294923938}
   - component: {fileID: 4650253163449566973}
-  - component: {fileID: 8086198807719937326}
+  - component: {fileID: -2321025179551777151}
   m_Layer: 0
   m_Name: NPC
   m_TagString: NPC
@@ -124,7 +124,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &8086198807719937326
+--- !u!114 &-2321025179551777151
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -138,12 +138,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkSpeed: 1
   runSpeed: 4
+  dragSpeed: 8
   minWalkTime: 1
   maxWalkTime: 3
   minIdleTime: 1
   maxIdleTime: 3
   minRunningTime: 3
   maxRunningTime: 7
-  safeDistance: 20
-  draggedMinDistance: 1
+  unsafeSeconds: 0.2
+  safeDistance: 3
+  draggedMinDistance: 3
   scared: 0

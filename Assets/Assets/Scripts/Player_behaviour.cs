@@ -143,7 +143,7 @@ public class Player_behaviour : MonoBehaviour
                 foreach (GameObject npc in npcsInScreen)
                 {
                     NPC_Behaviour npc_script = npc.GetComponent<NPC_Behaviour>();
-                    npc_script.scared = true;
+                    npc_script.GetScared(new Vector2(gameObject.transform.position.x, gameObject.transform.position.y);
 
                     currentTime = Mathf.Clamp(currentTime, 0, timer_suicideMax - 1);
                     currentTime += (npcsInScreen.Count/2);

@@ -40,6 +40,7 @@ public class Player_behaviour : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip deathMusic;
     public AudioClip[] scaredSounds; // Array de efectos de sonido de NPC asustados
+    public AudioClip[] shootSounds;
     private List<int> playedSoundIndices = new List<int>(); // Lista para realizar un seguimiento de los índices de sonidos ya reproducidos
 
     void Start()
@@ -165,12 +166,18 @@ public class Player_behaviour : MonoBehaviour
 
             CollectNPCsInScreen();
 
+
+
             if (npcsInScreen.Count > 0)
             {
                 GameObject randomNPC = npcsInScreen[Random.Range(0, npcsInScreen.Count)];
                 transform.position = randomNPC.transform.position;
                 Destroy(randomNPC);
                 suiciding = false;
+
+                // Reproduce un sonido aleatorio de "shootSounds"
+                int randomShootSoundIndex = Random.Range(0, shootSounds.Length);
+                audioSource.PlayOneShot(shootSounds[randomShootSoundIndex]);
 
                 progressBar.gameObject.SetActive(true);
                 cristal.gameObject.SetActive(true);

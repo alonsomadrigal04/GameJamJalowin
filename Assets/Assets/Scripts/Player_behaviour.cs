@@ -36,6 +36,10 @@ public class Player_behaviour : MonoBehaviour
     // ------- GAME_LOGIC -------
     public bool gameOver = false;
 
+    // ------- SOUNDS -------
+    public AudioSource audioSource;
+    public AudioClip deathMusic; 
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -68,15 +72,18 @@ public class Player_behaviour : MonoBehaviour
     {
         if (!suiciding)
         {
-
-            Vector2 dir = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-            rb.velocity = dir.normalized * moveSpeed;
-
-            if (dir != Vector2.zero)
+            if(scMenu.gameStarted)
             {
-                float angle = Mathf.Atan2(-dir.x, dir.y) * Mathf.Rad2Deg;
-                transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+                Vector2 dir = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+                rb.velocity = dir.normalized * moveSpeed;
+
+                if (dir != Vector2.zero)
+                {
+                    float angle = Mathf.Atan2(-dir.x, dir.y) * Mathf.Rad2Deg;
+                    transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+                }
             }
+
 
             if (Input.GetKeyDown(KeyCode.Space))
             {

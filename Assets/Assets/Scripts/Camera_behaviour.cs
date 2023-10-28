@@ -6,6 +6,8 @@ public class Camera_behaviour : MonoBehaviour
 {
     private Transform target;
     public float smoothness = 5.0f; // Ajusta la suavidad del movimiento de la cámara
+    [SerializeField] float minZoom = 0.5f;
+    [SerializeField] float maxZoom = 15.0f;
 
     Camera cam;
 
@@ -56,7 +58,7 @@ public class Camera_behaviour : MonoBehaviour
             if (playerBehavior != null)
             {
                 // Calcula el factor de escala en función del tiempo restante del jugador.
-                float scale = Mathf.Lerp(5.0f, 15.0f, playerBehavior.currentTime / playerBehavior.timer_suicideMax);
+                float scale = Mathf.Lerp(minZoom, maxZoom, playerBehavior.currentTime / playerBehavior.timer_suicideMax);
 
                 // Ajusta el tamaño de la cámara.
                 cam.orthographicSize = scale;

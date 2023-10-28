@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8668635143294923938}
   - component: {fileID: 4650253163449566973}
   - component: {fileID: -2321025179551777151}
+  - component: {fileID: 6599180143802358942}
   m_Layer: 0
   m_Name: NPC
   m_TagString: NPC
@@ -149,3 +150,23 @@ MonoBehaviour:
   safeDistance: 3
   draggedMinDistance: 3
   scared: 0
+--- !u!95 &6599180143802358942
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2794126296169741688}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ce731c52a497b3340b027a8faa978695, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0

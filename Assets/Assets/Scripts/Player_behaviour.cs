@@ -48,7 +48,6 @@ public class Player_behaviour : MonoBehaviour
             {
                 if (!Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.D))
                 {
-                    suiciding = true;
                     Suicide();
                 }
             }
@@ -57,6 +56,7 @@ public class Player_behaviour : MonoBehaviour
 
     void Suicide()
     {
+        suiciding = true;
         StartCoroutine(Dying(shooting_time));
     }
 

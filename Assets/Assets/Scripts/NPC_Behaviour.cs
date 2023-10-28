@@ -3,35 +3,58 @@ using UnityEngine;
 
 public class NPC_Behaviour : MonoBehaviour
 {
+    [Header("VELOCIDADES")]
+    [Space(15)]
     [SerializeField] float walkSpeed = 1.0f;
     [SerializeField] float runSpeed = 4.0f;
-    [SerializeField] float dragSpeed = 10.0f;
+    [SerializeField] float dragSpeed = 8.0f;
+    [Header("TIEMPOS DE ESPERA")]
+    [Space(15)]
     [SerializeField] float minWalkTime = 1.0f;
     [SerializeField] float maxWalkTime = 3.0f;
     [SerializeField] float minIdleTime = 1.0f;
     [SerializeField] float maxIdleTime = 3.0f;
     [SerializeField] float minRunningTime = 3.0f;
     [SerializeField] float maxRunningTime = 7.0f;
-    [SerializeField] float safeDistance = 20.0f;
-    [SerializeField] float draggedMinDistance = 1.0f;
+    [SerializeField] float unsafeSeconds = 1f;
+    [Header("DISTANCIAS MÍNIMAS")]
+    [Space(15)]
+    [SerializeField] float safeDistance = 3.0f;
+    [SerializeField] float draggedMinDistance = 3.0f;
 
+    //Componentes
     GameObject player;
     Rigidbody2D rb;
-    Player_behaviour scPlayer;
     Transform tfPlayer;
+    //Movimiento
     Vector2 dir;
     Vector2 runAwayDir;
     int leftOrRight = -1;
     bool isSeparating = false;
+    bool inSafeZone = true;
+    float unsafeTimer;
     float escapeMult = 1.5f;
     float currentSpeed;
     float maxSpeed;
     float moveTimer;
+    //Estados
     bool isWalking = false;
     bool isDragged = false;
     [HideInInspector] public bool scared = false;
 
     void Start()
+    {
+        SetUpShit();
+    }
+
+    void Update()
+    {
+        UpdateMovement();
+        AvoidDeathZones();
+        Debug.Log(inSafeZone);
+    }
+
+    void SetUpShit()
     {
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player");
@@ -39,21 +62,15 @@ public class NPC_Behaviour : MonoBehaviour
 
         if (player != null)
         {
-            scPlayer = player.GetComponent<Player_behaviour>();
             tfPlayer = player.GetComponent<Transform>();
         }
-    }
-
-    void Update()
-    {
-        UpdateMovement();
     }
 
     void UpdateMovement()
     {
         //Si se acaba el tiempo de miedo, el npc se desasusta y entra en modo andar
 
-        if (moveTimer <= 0 && scared)
+        if (moveTimer <= 0 && scared && inSafeZone)
         {
             scared = false;
             moveTimer = Random.Range(minWalkTime, maxWalkTime);
@@ -142,6 +159,29 @@ public class NPC_Behaviour : MonoBehaviour
         Transform tfNPC = gameObject.GetComponent<Transform>();
         Vector2 dir2Player = tfPlayer.position - tfNPC.position;
         runAwayDir = -dir2Player.normalized;
+    }
+
+    void AvoidDeathZones()
+    {
+        GameObject[] deathZones = GameObject.FindGameObjectsWithTag("DeathZone");
+
+        // Recorre las DeathZones para encontrar la más cercana
+        foreach (GameObject deathZone in deathZones)
+        {
+            if (deathZone.TryGetComponent<Collider2D>(out var deathCollider))
+            {
+                float distance = Vector2.Distance(transform.position, deathCollider.ClosestPoint(transform.position));
+
+                if (distance < safeDistance && unsafeTimer <= 0)
+                {
+                    inSafeZone = false;
+                    unsafeTimer = unsafeSeconds; //Temporizador diminuto para no entrar en bucle re loco
+                    rb.velocity *= -1; //Si entra en zona peligrosa, gira en sentido opuesto
+                }
+            }
+        }
+
+        if (unsafeTimer >= 0) unsafeTimer -= Time.deltaTime;
     }
 
     public void Death()

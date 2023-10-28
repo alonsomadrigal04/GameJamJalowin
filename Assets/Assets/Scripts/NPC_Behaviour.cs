@@ -41,6 +41,8 @@ public class NPC_Behaviour : MonoBehaviour
     bool isWalking = false;
     bool isDragged = false;
     [HideInInspector] public bool scared = false;
+    // Animator
+    public Animator animatior;
 
     void Start()
     {
@@ -69,6 +71,7 @@ public class NPC_Behaviour : MonoBehaviour
         if (moveTimer <= 0 && scared)
         {
             scared = false;
+            animatior.SetBool("isScared", false);
             moveTimer = Random.Range(minWalkTime, maxWalkTime);
         }
 
@@ -80,6 +83,7 @@ public class NPC_Behaviour : MonoBehaviour
             if (isWalking) //PASEANDO
             {
                 isWalking = false;
+                animatior.SetBool("isWalking", false);
                 moveTimer = Random.Range(minIdleTime, maxIdleTime);
 
                 rb.velocity = Vector2.zero;
@@ -87,6 +91,7 @@ public class NPC_Behaviour : MonoBehaviour
             else //ESPERANDO
             {
                 isWalking = true;
+                animatior.SetBool("isWalking", true);
                 float randomAngle = Random.Range(0f, 360f);
                 dir = new Vector2(Mathf.Cos(randomAngle * Mathf.Deg2Rad), Mathf.Sin(randomAngle * Mathf.Deg2Rad));
                 dir.Normalize();
@@ -159,6 +164,7 @@ public class NPC_Behaviour : MonoBehaviour
     public void GetScared()
     {
         scared = true;
+        animatior.SetBool("isScared", true);
         moveTimer = Random.Range(minRunningTime, maxRunningTime);
         isWalking = true;
 

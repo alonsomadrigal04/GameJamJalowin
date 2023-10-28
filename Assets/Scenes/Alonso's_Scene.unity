@@ -378,6 +378,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 995431433}
+    - target: {fileID: 8668635143294923938, guid: 4343a4228e5477345a2474d15feb71e8, type: 3}
+      propertyPath: m_Constraints
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4343a4228e5477345a2474d15feb71e8, type: 3}
 --- !u!1001 &344483690
@@ -617,6 +621,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 728508064}
     - target: {fileID: 4088164467800165796, guid: de4ffbb173b66544e9b635f93f2ef031, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 940068467}
+    - target: {fileID: 4088164467800165796, guid: de4ffbb173b66544e9b635f93f2ef031, type: 3}
       propertyPath: currentTime
       value: 10
       objectReference: {fileID: 0}
@@ -641,9 +649,21 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4088164467800165796, guid: de4ffbb173b66544e9b635f93f2ef031, type: 3}
+      propertyPath: shootSounds.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4088164467800165796, guid: de4ffbb173b66544e9b635f93f2ef031, type: 3}
       propertyPath: scaredSounds.Array.size
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 4088164467800165796, guid: de4ffbb173b66544e9b635f93f2ef031, type: 3}
+      propertyPath: shootSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 146d2dda93f160448a003733aa18b600, type: 3}
+    - target: {fileID: 4088164467800165796, guid: de4ffbb173b66544e9b635f93f2ef031, type: 3}
+      propertyPath: shootSounds.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 6cce9c3c98cc70a4398a0d3686332b19, type: 3}
     - target: {fileID: 4088164467800165796, guid: de4ffbb173b66544e9b635f93f2ef031, type: 3}
       propertyPath: scaredSounds.Array.data[0]
       value: 
@@ -999,6 +1019,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: NPC
       objectReference: {fileID: 0}
+    - target: {fileID: 6599180143802358942, guid: 4343a4228e5477345a2474d15feb71e8, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: ce731c52a497b3340b027a8faa978695, type: 2}
     - target: {fileID: 8086198807719937326, guid: 4343a4228e5477345a2474d15feb71e8, type: 3}
       propertyPath: player
       value: 
@@ -1301,6 +1325,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: NPC
       objectReference: {fileID: 0}
+    - target: {fileID: 6599180143802358942, guid: 4343a4228e5477345a2474d15feb71e8, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: ce731c52a497b3340b027a8faa978695, type: 2}
     - target: {fileID: 8086198807719937326, guid: 4343a4228e5477345a2474d15feb71e8, type: 3}
       propertyPath: player
       value: 

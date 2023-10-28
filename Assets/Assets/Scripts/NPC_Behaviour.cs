@@ -101,6 +101,16 @@ public class NPC_Behaviour : MonoBehaviour
             }
         }
 
+        if (rb.velocity.x < 0)
+        {
+            transform.localScale = new Vector3(-1.626057f, gameObject.transform.localScale.y, gameObject.transform.localScale.z);
+        }
+        // Si el NPC se está moviendo a la derecha, restauras la escala original
+        else if (rb.velocity.x > 0)
+        {
+            transform.localScale = new Vector3(1.626057f, gameObject.transform.localScale.y, gameObject.transform.localScale.z);
+        }
+
         moveTimer -= Time.deltaTime;
 
         //Asignar valores a variables según la situación

@@ -1,8 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player_behaviour : MonoBehaviour
 {
@@ -11,8 +10,18 @@ public class Player_behaviour : MonoBehaviour
 
     // ------- SUICIDE -------
     public bool suiciding;
-    public float shooting_time;
+    public float firts_suicide;
+    public float after_suicide;
     private List<GameObject> npcsInScreen = new List<GameObject>();
+    private bool firstTime = true;
+
+    // ------- SUICIDE_BAR -------
+    [SerializeField] float timer = 15f; 
+    public float currentTime;
+    [SerializeField] float maxProgressBarWidth = 1.0f;
+    [SerializeField] Image progressBar;
+
+
 
     // ------- RIGIDBODY -------
     private Rigidbody2D rb;
@@ -29,6 +38,8 @@ public class Player_behaviour : MonoBehaviour
     void Update()
     {
         MovePlayer();
+
+        Suicide_bar();
     }
 
     void MovePlayer()
@@ -49,6 +60,7 @@ public class Player_behaviour : MonoBehaviour
                 if (!Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.D))
                 {
                     Suicide();
+                    currentTime = 0;
                 }
             }
         }
@@ -57,8 +69,43 @@ public class Player_behaviour : MonoBehaviour
     void Suicide()
     {
         suiciding = true;
-        StartCoroutine(Dying(shooting_time));
+        if (firstTime)
+        {
+            StartCoroutine(Dying(firts_suicide));
+            firstTime = false;
+        }
+        else
+        {
+            StartCoroutine(Dying(after_suicide));
+        }
     }
+
+    void Suicide_bar()
+    {
+        if (!suiciding)
+        {
+            currentTime += Time.deltaTime;
+
+            // Calcula el progreso como un valor entre 0 y 1 en función del tiempo restante.
+            float progress = Mathf.Clamp01(1 - currentTime / timer);
+
+            // Calcula el ancho actual de la barra de progreso.
+            float currentWidth = maxProgressBarWidth * progress;
+
+            progressBar.transform.localScale = new Vector3(currentWidth, progressBar.transform.localScale.y, progressBar.transform.localScale.z);
+
+            
+            // Comprueba si el temporizador ha terminado
+            if (currentTime >= timer)
+            {
+                suiciding = true;
+                Suicide();
+                currentTime = 0;
+            }
+        }
+    }
+
+
 
     void CollectNPCsInScreen()
     {
@@ -93,7 +140,7 @@ public class Player_behaviour : MonoBehaviour
                 suiciding = false;
                 foreach (GameObject npc in npcsInScreen)
                 {
-                    npc.scared = true;
+                    //npc.scared = true;
                 }
             }
             else

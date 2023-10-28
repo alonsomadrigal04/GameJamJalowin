@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Player_behaviour : MonoBehaviour
@@ -14,12 +16,14 @@ public class Player_behaviour : MonoBehaviour
 
     // ------- RIGIDBODY -------
     private Rigidbody2D rb;
+
+    // ------- SpriteRenderer -------
     private SpriteRenderer spriteRenderer;
 
     void Start()
     {
-        rb = GetComponent <Rigidbody2D>();
-        spriteRenderer = GetComponent <SpriteRenderer>();
+        rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -36,7 +40,7 @@ public class Player_behaviour : MonoBehaviour
 
             if (dir != Vector2.zero)
             {
-                float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+                float angle = Mathf.Atan2(-dir.x, dir.y) * Mathf.Rad2Deg;
                 transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
             }
 
@@ -44,7 +48,6 @@ public class Player_behaviour : MonoBehaviour
             {
                 if (!Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.D))
                 {
-                    suiciding = true;
                     Suicide();
                 }
             }
@@ -53,32 +56,58 @@ public class Player_behaviour : MonoBehaviour
 
     void Suicide()
     {
-        StartCoroutine(MiMetodoEspera(shooting_time));
+        suiciding = true;
+        StartCoroutine(Dying(shooting_time));
+    }
+
+    void CollectNPCsInScreen()
+    {
         GameObject[] allNpcs = GameObject.FindGameObjectsWithTag("NPC");
-
-        // Obtiene la cámara principal
         Camera mainCamera = Camera.main;
-
-        // Limpia la lista de NPCs en pantalla
         npcsInScreen.Clear();
+
         foreach (GameObject npc in allNpcs)
         {
             Vector3 screenPoint = mainCamera.WorldToViewportPoint(npc.transform.position);
             if (screenPoint.x >= 0 && screenPoint.x <= 1 && screenPoint.y >= 0 && screenPoint.y <= 1)
             {
-                // El NPC está dentro de la pantalla, agrégalo a la lista
                 npcsInScreen.Add(npc);
             }
         }
     }
 
-    IEnumerator MiMetodoEspera(float time)
+    IEnumerator Dying(float time)
     {
         if (suiciding)
         {
             Debug.Log("Antes de morir");
-            yield return new WaitForSeconds(time); // Espera durante 2 segundos
+            yield return new WaitForSeconds(time);
+
+            CollectNPCsInScreen();
+
+            if (npcsInScreen.Count > 0)
+            {
+                GameObject randomNPC = npcsInScreen[Random.Range(0, npcsInScreen.Count)];
+                transform.position = randomNPC.transform.position;
+                Destroy(randomNPC);
+                suiciding = false;
+                foreach (GameObject npc in npcsInScreen)
+                {
+                    npc.scared = true;
+                }
+            }
+            else
+            {
+                GameOver();
+            }
+
             Debug.Log("Después de morir");
         }
     }
+
+    void GameOver()
+    {
+        Destroy(gameObject);  
+    }
+
 }

@@ -45,7 +45,7 @@ public class Player_behaviour : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        spriteRenderer = GetComponent < SpriteRenderer>();
+        spriteRenderer = GetComponent <SpriteRenderer>();
         currentTime = timer_suicideMax;
 
         if (scMenu.gameStarted)
@@ -132,9 +132,13 @@ public class Player_behaviour : MonoBehaviour
                     currentTime = timer; // Reinicia el tiempo
                     progressBar.gameObject.SetActive(true);
                 }
+
+                // Asegúrate de que currentTime no exceda el valor máximo
+                currentTime = Mathf.Min(currentTime, timer_suicideMax);
             }
         }
     }
+
 
     void CollectNPCsInScreen()
     {
@@ -194,7 +198,7 @@ public class Player_behaviour : MonoBehaviour
                     AudioSource.PlayClipAtPoint(scaredSounds[randomSoundIndex], npc.transform.position);
 
                     currentTime = Mathf.Clamp(currentTime, 0, timer_suicideMax - 2);
-                    currentTime += (npcsInScreen.Count / 2);
+                    currentTime += (npcsInScreen.Count * 0.3f);
                 }
             }
             else

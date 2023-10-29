@@ -294,20 +294,21 @@ public class Player_behaviour : MonoBehaviour
         int randomShootSoundIndex = Random.Range(0, shootSounds.Length);
         audioSource.PlayOneShot(shootSounds[randomShootSoundIndex]);
         GameObject nuevoObjeto2 = Instantiate(bloodAnimation, new Vector3(transform.position.x - 0.5f, transform.position.y +1, transform.position.z), Quaternion.identity);
-        SpawnParticles();
+        //SpawnParticles();
     }
-    void SpawnParticles()
-    {
-        // Instancia el prefab de partículas en la posición actual y sin rotación
-        GameObject particleObject = Instantiate(particlePrefab, new Vector3(transform.position.x - 0.5f, transform.position.y + 1, transform.position.z), Quaternion.identity);
 
-        // Asegúrate de que el sistema de partículas esté emitiendo (si no se inicia automáticamente)
-        ParticleSystem particleSystem = particleObject.GetComponent<ParticleSystem>();
-        if (particleSystem != null)
-        {
-            particleSystem.Play();
-        }
-    }
+    //void SpawnParticles()
+    //{
+    //    // Instancia el prefab de partículas en la posición actual y sin rotación
+    //    //GameObject particleObject = Instantiate(particlePrefab, new Vector3(transform.position.x - 0.5f, transform.position.y + 1, transform.position.z), Quaternion.identity);
+
+    //    // Asegúrate de que el sistema de partículas esté emitiendo (si no se inicia automáticamente)
+    //    ParticleSystem particleSystem = particleObject.GetComponent<ParticleSystem>();
+    //    if (particleSystem != null)
+    //    {
+    //        particleSystem.Play();
+    //    }
+    //}
 
 
     private void CheckWin()

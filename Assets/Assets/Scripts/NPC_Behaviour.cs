@@ -44,6 +44,9 @@ public class NPC_Behaviour : MonoBehaviour
     // Animator
     public Animator animatior;
     public GameObject particlePrefab; // Asigna el prefab de partículas en el Inspector
+    public AudioClip[] chainSounds;
+    public AudioClip[] blood;
+    public AudioSource audioSource;
 
 
     void Start()
@@ -227,6 +230,8 @@ public class NPC_Behaviour : MonoBehaviour
     public void Death()
     {
         SpawnParticles();
+        int randomChainSoundIndex = Random.Range(0, chainSounds.Length);
+        audioSource.PlayOneShot(chainSounds[randomChainSoundIndex]);
         Destroy(gameObject);
     }
 }

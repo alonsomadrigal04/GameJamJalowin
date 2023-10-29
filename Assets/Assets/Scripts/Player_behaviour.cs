@@ -43,6 +43,7 @@ public class Player_behaviour : MonoBehaviour
     [HideInInspector] public AudioClip deathMusic;
     public AudioClip[] scaredSounds; // Array de efectos de sonido de NPC asustados
     public AudioClip[] shootSounds;
+    public AudioClip chainsaw;
     private List<int> playedSoundIndices = new List<int>(); // Lista para realizar un seguimiento de los índices de sonidos ya reproducidos
 
     //------- CAMERA -------
@@ -60,6 +61,11 @@ public class Player_behaviour : MonoBehaviour
     public GameObject particlePrefab; // Asigna el prefab de partículas en el Inspector
 
 
+    public float timerBandEnding;
+    public float maxtimerBadEnding;
+    public bool isBadEnding = false;  // Estado de la BadEnding
+
+
 
 
     void Start()
@@ -67,6 +73,7 @@ public class Player_behaviour : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent <SpriteRenderer>();
         currentTime = timer_suicideMax;
+        timerBandEnding = maxtimerBadEnding;
 
         // Establece el color inicial del personaje
         spriteRenderer.color = baseColor;
@@ -93,6 +100,16 @@ public class Player_behaviour : MonoBehaviour
             ChangeColorBasedOnTime(); 
 
         }
+        if (isBadEnding)
+        {
+            timerBandEnding -= Time.deltaTime;
+
+            // Cuando el temporizador llega a cero, cambia a la pantalla "GameOver"
+            if (timerBandEnding <= 0)
+            {
+                SceneManager.LoadScene("GameOver");
+            }
+        }
     }
 
     void ChangeColorBasedOnTime()
@@ -112,7 +129,7 @@ public class Player_behaviour : MonoBehaviour
 
     void MovePlayer()
     {
-        if (!suiciding)
+        if (!suiciding && !isBadEnding) // Agrega !isBadEnding a la condición
         {
             if (scMenu.gameStarted)
             {
@@ -134,15 +151,20 @@ public class Player_behaviour : MonoBehaviour
 
                 // Si quieres mantener el eje X constante, no necesitas modificar la rotación en este caso.
             }
-
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                rb.velocity = new Vector2(0, 0);
-                Suicide();
-            }
         }
-        else rb.velocity = Vector2.zero;
+        else
+        {
+            // El jugador no puede moverse, así que su velocidad es cero
+            rb.velocity = Vector2.zero;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            rb.velocity = new Vector2(0, 0);
+            Suicide();
+        }
     }
+
 
 
 
@@ -218,6 +240,8 @@ public class Player_behaviour : MonoBehaviour
             }
         }
     }
+    
+
 
     IEnumerator Dying(float time)
     {
@@ -234,7 +258,7 @@ public class Player_behaviour : MonoBehaviour
                 GameObject nuevoObjeto1 = Instantiate(blood[randomBloodMarck], new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
                 scCamera.CameraShake(0.3f, 1000.0f);
                 GameObject randomNPC = npcsInScreen[Random.Range(0, npcsInScreen.Count)];
-                transform.position = randomNPC.transform.position;
+                
                 Destroy(randomNPC);
 
                 suiciding = false;
@@ -272,6 +296,8 @@ public class Player_behaviour : MonoBehaviour
                     if (npcsInScreen.Count > 0) currentTime += 2;
                     currentTime += (npcsInScreen.Count * 0.5f);
                 }
+
+                transform.position = randomNPC.transform.position;
             }
             else
             {
@@ -293,21 +319,7 @@ public class Player_behaviour : MonoBehaviour
         int randomShootSoundIndex = Random.Range(0, shootSounds.Length);
         audioSource.PlayOneShot(shootSounds[randomShootSoundIndex]);
         GameObject nuevoObjeto2 = Instantiate(bloodAnimation, new Vector3(transform.position.x - 0.5f, transform.position.y +1, transform.position.z), Quaternion.identity);
-        //SpawnParticles();
     }
-
-    //void SpawnParticles()
-    //{
-    //    // Instancia el prefab de partículas en la posición actual y sin rotación
-    //    //GameObject particleObject = Instantiate(particlePrefab, new Vector3(transform.position.x - 0.5f, transform.position.y + 1, transform.position.z), Quaternion.identity);
-
-    //    // Asegúrate de que el sistema de partículas esté emitiendo (si no se inicia automáticamente)
-    //    ParticleSystem particleSystem = particleObject.GetComponent<ParticleSystem>();
-    //    if (particleSystem != null)
-    //    {
-    //        particleSystem.Play();
-    //    }
-    //}
 
 
     private void CheckWin()
@@ -317,6 +329,33 @@ public class Player_behaviour : MonoBehaviour
             // El jugador ganó, carga la escena "winscreen"
             Suicide();
             SceneManager.LoadScene("winscreen");
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("DeathZone"))
+        {
+            BadEnding();
+            isBadEnding= true;
+        }
+    }
+
+    public void BadEnding()
+    {
+        SpawnParticles();
+        audioSource.PlayOneShot(chainsaw);
+    }
+    void SpawnParticles()
+    {
+        // Instancia el prefab de partículas en la posición actual y sin rotación
+        GameObject particleObject = Instantiate(particlePrefab, new Vector3(transform.position.x - 0.5f, transform.position.y + 1, transform.position.z), Quaternion.identity);
+
+        // Asegúrate de que el sistema de partículas esté emitiendo (si no se inicia automáticamente)
+        ParticleSystem particleSystem = particleObject.GetComponent<ParticleSystem>();
+        if (particleSystem != null)
+        {
+            particleSystem.Play();
         }
     }
 

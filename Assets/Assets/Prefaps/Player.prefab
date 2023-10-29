@@ -150,6 +150,7 @@ MonoBehaviour:
   shootSounds:
   - {fileID: 8300000, guid: 146d2dda93f160448a003733aa18b600, type: 3}
   - {fileID: 8300000, guid: 6cce9c3c98cc70a4398a0d3686332b19, type: 3}
+  chainsaw: {fileID: 0}
   scCamera: {fileID: 0}
   cam: {fileID: 0}
   animatior: {fileID: 7730281747776350601}
@@ -160,6 +161,9 @@ MonoBehaviour:
   baseColor: {r: 1, g: 0.6156863, b: 0.909804, a: 1}
   finalColor: {r: 1, g: 0, b: 0, a: 1}
   particlePrefab: {fileID: 0}
+  timerBandEnding: 0
+  maxtimerBadEnding: 0
+  isBadEnding: 0
 --- !u!95 &7730281747776350601
 Animator:
   serializedVersion: 5
@@ -193,7 +197,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.003070891, y: 0.0048184097}
+  m_Offset: {x: -0.0045033693, y: 0.008605495}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -204,7 +208,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.54099596, y: 0.2384044}
+  m_Size: {x: 0.40465963, y: 0.19295898}
   m_EdgeRadius: 0
 --- !u!1 &6033792477531780083
 GameObject:

@@ -12,7 +12,10 @@ public class Final_results : MonoBehaviour
     private void Start()
     {
         StartCoroutine(BlinkText());
-        score.text = "Have shot themselves 40 people";
+        float totalTime = PlayerPrefs.GetFloat("TotalTime", 0.0f);
+        score.text = "you have massacred the room in: " + totalTime;
+        
+
 
 
     }

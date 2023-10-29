@@ -12,8 +12,8 @@ public class Camera_behaviour : MonoBehaviour
     private Camera cam;
     private float shakeAmount = 0.0f;
     float zoomSmoothnes = 0.05f;
-    [SerializeField] float zoomMin = 15.0f;
-    [SerializeField] float zoomMax = 20.0f;
+    [SerializeField] float zoomMin = 11.0f;
+    [SerializeField] float zoomMax = 18.0f;
     float scale;
 
     private void Start()

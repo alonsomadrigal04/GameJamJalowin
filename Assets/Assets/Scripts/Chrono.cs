@@ -6,14 +6,14 @@ using UnityEngine.UI;
 
 public class Chrono : MonoBehaviour
 {
-    [SerializeField] Menu_Behaviour menu; 
+    [SerializeField] Menu_Behaviour menu;
     TextMeshProUGUI miTexto;
 
     float myChrono = 0.0f;
 
     void Start()
     {
-        miTexto = GetComponent<TextMeshProUGUI>();
+        miTexto = GetComponent < TextMeshProUGUI>();
     }
 
     void Update()
@@ -23,6 +23,15 @@ public class Chrono : MonoBehaviour
             miTexto.text = "Time: " + myChrono.ToString("F2");
             myChrono += Time.deltaTime;
         }
-        else miTexto.text = "";
+        else
+        {
+            miTexto.text = "";
+        }
+    }
+
+    private void OnDestroy()
+    {
+        // Guardar el tiempo en PlayerPrefs
+        PlayerPrefs.SetFloat("TotalTime", myChrono);
     }
 }

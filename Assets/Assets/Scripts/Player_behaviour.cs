@@ -48,6 +48,7 @@ public class Player_behaviour : MonoBehaviour
 
     //------- ANIMATOR ------- 
     public Animator animatior;
+    public GameObject cuerpo;
 
     void Start()
     {
@@ -84,22 +85,36 @@ public class Player_behaviour : MonoBehaviour
             if (scMenu.gameStarted)
             {
                 Vector2 dir = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-                rb.velocity = dir.normalized * moveSpeed;
 
-                if (dir != Vector2.zero)
-                {
-                    float angle = Mathf.Atan2(-dir.x, dir.y) * Mathf.Rad2Deg;
-                    transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-                }
+                // Verifica si el jugador se está moviendo
+                bool isWalking = dir != Vector2.zero;
+
+                // Establece el valor de la animación
+                animatior.SetBool("isWalking", isWalking);
+
+                // Calcula la dirección vertical
+                float flipDirection = Mathf.Sign(dir.x); // Devuelve 1 si te mueves hacia la derecha y -1 si te mueves hacia la izquierda
+
+                // Voltea el sprite verticalmente
+                transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x) * flipDirection, transform.localScale.y, transform.localScale.z);
+
+                rb.velocity = new Vector2(dir.x * moveSpeed, dir.y * moveSpeed); // Multiplica dir.x y dir.y por moveSpeed
+
+                // Si quieres mantener el eje X constante, no necesitas modificar la rotación en este caso.
             }
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 rb.velocity = new Vector2(0, 0);
+                animatior.SetBool("Dies", true);
                 Suicide();
             }
         }
     }
+
+
+
+
 
     public void Suicide()
     {
@@ -168,7 +183,12 @@ public class Player_behaviour : MonoBehaviour
         if (suiciding)
         {
             Debug.Log("Antes de morir");
+
+
+
             yield return new WaitForSeconds(time);
+            GameObject nuevoObjeto = Instantiate(cuerpo, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+            
 
             CollectNPCsInScreen();
 
@@ -182,12 +202,12 @@ public class Player_behaviour : MonoBehaviour
                 Destroy(randomNPC);
                 suiciding = false;
 
-                // Reproduce un sonido aleatorio de "shootSounds"
-                int randomShootSoundIndex = Random.Range(0, shootSounds.Length);
-                audioSource.PlayOneShot(shootSounds[randomShootSoundIndex]);
+                
 
                 progressBar.gameObject.SetActive(true);
                 cristal.gameObject.SetActive(true);
+
+
 
                 foreach (GameObject npc in npcsInScreen)
                 {
@@ -221,8 +241,19 @@ public class Player_behaviour : MonoBehaviour
                 gameOver = true;
             }
 
+            animatior.SetBool("Dies", false);
+            // Crea una instancia del GameObject prefabACrear en la posición (0, 0, 0) y sin rotación.
+
+
             Debug.Log("Después de morir");
         }
+    }
+
+    public void ShootingSounds()
+    {
+        int randomShootSoundIndex = Random.Range(0, shootSounds.Length);
+        audioSource.PlayOneShot(shootSounds[randomShootSoundIndex]);
+
     }
 
     private void CheckWin()

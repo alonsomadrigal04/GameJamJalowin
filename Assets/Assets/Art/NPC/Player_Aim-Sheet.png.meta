@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e7f69519492115943a56a5ca0e222397
+guid: 653eb667e0624f84caefbfbdca592b34
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -45,8 +45,8 @@ TextureImporter:
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 0
-  spritePivot: {x: 0.5, y: 0.5}
+  alignment: 7
+  spritePivot: {x: 0.5, y: 0}
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
@@ -105,7 +105,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: NPC_Run-Sheet_0
+      name: Player_Aim-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -119,14 +119,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3ecbec11599ece04d9fac915bf59a467
-      internalID: 1840025328
+      spriteID: b361657d264628e42a4f426f3ff39d7a
+      internalID: 1242732012
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NPC_Run-Sheet_1
+      name: Player_Aim-Sheet_1
       rect:
         serializedVersion: 2
         x: 20
@@ -140,14 +140,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 853867e1205716d40964ef4ea2e4cc16
-      internalID: -1268433392
+      spriteID: 94ee43a2ecd62ca46a11358ef91f73a3
+      internalID: -2091115814
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NPC_Run-Sheet_2
+      name: Player_Aim-Sheet_2
       rect:
         serializedVersion: 2
         x: 40
@@ -161,14 +161,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 12e6168ef2731fb4aa3d0602a47b8fc2
-      internalID: 1706997178
+      spriteID: 7dd95ccd349e22e418d752f4c6abcac1
+      internalID: 1312832025
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NPC_Run-Sheet_3
+      name: Player_Aim-Sheet_3
       rect:
         serializedVersion: 2
         x: 60
@@ -182,14 +182,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b1211029ef59cdc4db7aeba599f99f05
-      internalID: 730649289
+      spriteID: 8e0d8f586a6971d45855e91efa51ea92
+      internalID: 113337048
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NPC_Run-Sheet_4
+      name: Player_Aim-Sheet_4
       rect:
         serializedVersion: 2
         x: 80
@@ -203,14 +203,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8c097a49ed0084f46b729c27b12d7edb
-      internalID: -707633101
+      spriteID: 03fb4a6fb87d08a4299de48b94dbc5f0
+      internalID: 1555386112
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NPC_Run-Sheet_5
+      name: Player_Aim-Sheet_5
       rect:
         serializedVersion: 2
         x: 100
@@ -224,14 +224,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f4cb3d10a42917d4dab25ea060a4236b
-      internalID: 375013182
+      spriteID: 8de00e2b51d6bb046b5d8f7fdca35083
+      internalID: 1853621374
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NPC_Run-Sheet_6
+      name: Player_Aim-Sheet_6
       rect:
         serializedVersion: 2
         x: 120
@@ -245,14 +245,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1ab3d9a975dcee6408d15e5c119a75a4
-      internalID: 81546139
+      spriteID: 3d6e147f14b34f44890f55dcee5eafd6
+      internalID: -556912704
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NPC_Run-Sheet_7
+      name: Player_Aim-Sheet_7
       rect:
         serializedVersion: 2
         x: 140
@@ -266,14 +266,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 658787f5d6c1300419d49d6a32685b1b
-      internalID: -577590547
+      spriteID: 357955a0b826fc14c82a0751d0418000
+      internalID: 696623757
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NPC_Run-Sheet_8
+      name: Player_Aim-Sheet_8
       rect:
         serializedVersion: 2
         x: 160
@@ -287,14 +287,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 387fb73c0cbf774488b05fd26d187856
-      internalID: 1076521025
+      spriteID: 19c1715f5898180428aa99a5ed20a49a
+      internalID: -138852244
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NPC_Run-Sheet_9
+      name: Player_Aim-Sheet_9
       rect:
         serializedVersion: 2
         x: 180
@@ -308,14 +308,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c9fa5fabeb9046d41a19cc8d57e5fa70
-      internalID: -868863238
+      spriteID: f473846b35d28bc4aada6727d9bd9e16
+      internalID: -1165586577
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NPC_Run-Sheet_10
+      name: Player_Aim-Sheet_10
       rect:
         serializedVersion: 2
         x: 200
@@ -329,14 +329,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ad91e3cd90c581c4d9980d92688801a9
-      internalID: 444640220
+      spriteID: 03a3deea9f94ddb4ca27b8d5658f368b
+      internalID: 1847747539
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NPC_Run-Sheet_11
+      name: Player_Aim-Sheet_11
       rect:
         serializedVersion: 2
         x: 220
@@ -350,8 +350,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 11f65c480e0474549b3a5a0e5b3b3e1e
-      internalID: 92111509
+      spriteID: 4fa6440de059c3b4ab96b16a22da54a8
+      internalID: -2105371686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Aim-Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 0
+        width: 20
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8355e89ff052ba4aba560f50546bc41
+      internalID: 77021394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Aim-Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 0
+        width: 20
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ccb02ad03edb9cd4388bd3325115a24a
+      internalID: -2132555803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Aim-Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 0
+        width: 20
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44c499315ce7d7e41ae58622706e815b
+      internalID: 977583659
       vertices: []
       indices: 
       edges: []
@@ -367,18 +430,21 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      NPC_Run-Sheet_0: 1840025328
-      NPC_Run-Sheet_9: -868863238
-      NPC_Run-Sheet_1: -1268433392
-      NPC_Run-Sheet_8: 1076521025
-      NPC_Run-Sheet_2: 1706997178
-      NPC_Run-Sheet_6: 81546139
-      NPC_Run-Sheet_4: -707633101
-      NPC_Run-Sheet_3: 730649289
-      NPC_Run-Sheet_5: 375013182
-      NPC_Run-Sheet_10: 444640220
-      NPC_Run-Sheet_11: 92111509
-      NPC_Run-Sheet_7: -577590547
+      Player_Aim-Sheet_14: 977583659
+      Player_Aim-Sheet_1: -2091115814
+      Player_Aim-Sheet_7: 696623757
+      Player_Aim-Sheet_0: 1242732012
+      Player_Aim-Sheet_8: -138852244
+      Player_Aim-Sheet_6: -556912704
+      Player_Aim-Sheet_12: 77021394
+      Player_Aim-Sheet_4: 1555386112
+      Player_Aim-Sheet_10: 1847747539
+      Player_Aim-Sheet_5: 1853621374
+      Player_Aim-Sheet_3: 113337048
+      Player_Aim-Sheet_9: -1165586577
+      Player_Aim-Sheet_2: 1312832025
+      Player_Aim-Sheet_11: -2105371686
+      Player_Aim-Sheet_13: -2132555803
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

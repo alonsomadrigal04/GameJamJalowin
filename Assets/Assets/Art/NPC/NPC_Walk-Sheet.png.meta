@@ -70,7 +70,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 2
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -105,15 +105,15 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: NPC_Walk-Sheet_0
+      name: NPC_Walk-Sheet_2
       rect:
         serializedVersion: 2
-        x: 0
+        x: 40
         y: 0
         width: 20
         height: 20
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -126,15 +126,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NPC_Walk-Sheet_1
+      name: NPC_Walk-Sheet_4
       rect:
         serializedVersion: 2
-        x: 20
+        x: 80
         y: 0
         width: 20
         height: 20
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -147,15 +147,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NPC_Walk-Sheet_2
+      name: NPC_Walk-Sheet_0
       rect:
         serializedVersion: 2
-        x: 40
+        x: 0
         y: 0
         width: 20
         height: 20
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -168,15 +168,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NPC_Walk-Sheet_3
+      name: NPC_Walk-Sheet_5
       rect:
         serializedVersion: 2
-        x: 60
+        x: 100
         y: 0
         width: 20
         height: 20
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -189,15 +189,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NPC_Walk-Sheet_4
+      name: NPC_Walk-Sheet_7
       rect:
         serializedVersion: 2
-        x: 80
+        x: 140
         y: 0
         width: 20
         height: 20
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -210,15 +210,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NPC_Walk-Sheet_5
+      name: NPC_Walk-Sheet_6
       rect:
         serializedVersion: 2
-        x: 100
+        x: 120
         y: 0
         width: 20
         height: 20
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -231,15 +231,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NPC_Walk-Sheet_6
+      name: NPC_Walk-Sheet_3
       rect:
         serializedVersion: 2
-        x: 120
+        x: 60
         y: 0
         width: 20
         height: 20
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -252,15 +252,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NPC_Walk-Sheet_7
+      name: NPC_Walk-Sheet_1
       rect:
         serializedVersion: 2
-        x: 140
+        x: 20
         y: 0
         width: 20
         height: 20
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -283,14 +283,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      NPC_Walk-Sheet_2: 363846521
-      NPC_Walk-Sheet_4: 1666806828
-      NPC_Walk-Sheet_0: 103504895
-      NPC_Walk-Sheet_5: 1426106415
-      NPC_Walk-Sheet_7: 1429006348
-      NPC_Walk-Sheet_6: -2096613539
-      NPC_Walk-Sheet_3: -1819858345
-      NPC_Walk-Sheet_1: -952145336
+      NPC_Walk-Sheet_2: 103504895
+      NPC_Walk-Sheet_4: -952145336
+      NPC_Walk-Sheet_0: 363846521
+      NPC_Walk-Sheet_5: -1819858345
+      NPC_Walk-Sheet_7: 1666806828
+      NPC_Walk-Sheet_6: 1426106415
+      NPC_Walk-Sheet_3: -2096613539
+      NPC_Walk-Sheet_1: 1429006348
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

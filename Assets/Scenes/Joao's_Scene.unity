@@ -355,8 +355,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   smoothness: 5
-  minZoom: 0.5
-  maxZoom: 15
+  maxShakeAmount: 2
+  shakeSpeed: 1
 --- !u!1001 &527155594
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -586,6 +586,9 @@ MonoBehaviour:
   startDelay: 2
   pressKeyText: {fileID: 2109196861}
   gameStarted: 0
+  audioSource: {fileID: 0}
+  menuMusic: {fileID: 0}
+  metalMusic: {fileID: 0}
 --- !u!4 &1296382775
 Transform:
   m_ObjectHideFlags: 0

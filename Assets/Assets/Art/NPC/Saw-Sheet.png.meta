@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: cd690b130150b6f48953067b390c002b
+guid: 92d6a29d8de0ba447b4ea09f541d6b64
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 18
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -70,7 +70,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 2
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -105,127 +105,106 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: NPC_Idle-Sheet_0
+      name: Saw-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 20
-        height: 20
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 95
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7dcf0e684b9600a48877530958562230
-      internalID: 1547671194
+      spriteID: b3cd85b24a50e0e42aa182357b839a4d
+      internalID: 1525502254
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NPC_Idle-Sheet_1
+      name: Saw-Sheet_1
       rect:
         serializedVersion: 2
-        x: 20
+        x: 98
         y: 0
-        width: 20
-        height: 20
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 95
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9417fc9b3186df74a8316661bfdbcfaf
-      internalID: -740227089
+      spriteID: 97981f2d65e3d7944a24a2d4e0fce9d8
+      internalID: -328801959
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NPC_Idle-Sheet_2
+      name: Saw-Sheet_2
       rect:
         serializedVersion: 2
-        x: 40
+        x: 196
         y: 0
-        width: 20
-        height: 20
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 95
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d0704409b9531c24fae500812ce05ee5
-      internalID: -563341021
+      spriteID: ccf5f3bca8d867a47aac01ad74cd3af8
+      internalID: -1211186462
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NPC_Idle-Sheet_3
+      name: Saw-Sheet_3
       rect:
         serializedVersion: 2
-        x: 60
+        x: 294
         y: 0
-        width: 20
-        height: 20
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 95
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1746c78d7e3f46441ae2fd1e23db51b0
-      internalID: 11381925
+      spriteID: 36b4969f3dcb6b645b9165ba6348bc81
+      internalID: 2028588171
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NPC_Idle-Sheet_4
+      name: Saw-Sheet_4
       rect:
         serializedVersion: 2
-        x: 80
+        x: 392
         y: 0
-        width: 20
-        height: 20
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 95
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 709e3a2cc72231b4582d3fa633134c81
-      internalID: -284915371
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: NPC_Idle-Sheet_5
-      rect:
-        serializedVersion: 2
-        x: 100
-        y: 0
-        width: 20
-        height: 20
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c719586338004904682d248a08e74d44
-      internalID: 780560577
+      spriteID: f469676f17eee724796ebc898f970438
+      internalID: 2059842625
       vertices: []
       indices: 
       edges: []
@@ -241,12 +220,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      NPC_Idle-Sheet_3: 11381925
-      NPC_Idle-Sheet_0: 1547671194
-      NPC_Idle-Sheet_4: -284915371
-      NPC_Idle-Sheet_2: -563341021
-      NPC_Idle-Sheet_5: 780560577
-      NPC_Idle-Sheet_1: -740227089
+      Saw-Sheet_3: 2028588171
+      Saw-Sheet_2: -1211186462
+      Saw-Sheet_0: 1525502254
+      Saw-Sheet_1: -328801959
+      Saw-Sheet_4: 2059842625
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e7f69519492115943a56a5ca0e222397
+guid: 1f8f46c2512c61a48b67ce2d9cbe3eed
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -45,9 +45,9 @@ TextureImporter:
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 0
-  spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 18
+  alignment: 7
+  spritePivot: {x: 0.5, y: 0}
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -105,253 +105,211 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: NPC_Run-Sheet_0
+      name: Blood_Particles-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 20
-        height: 20
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3ecbec11599ece04d9fac915bf59a467
-      internalID: 1840025328
+      spriteID: 16b8b2ca18baad540b304f7eb582e52e
+      internalID: 288144775
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NPC_Run-Sheet_1
+      name: Blood_Particles-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 0
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d576319a627d694b89f2d9487698824
+      internalID: 1980660509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood_Particles-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 0
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 885f3b0b7670f8f439547e596a03f380
+      internalID: 874131638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood_Particles-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 0
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a4e479f660062a4d9234272494f5757
+      internalID: 906641947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood_Particles-Sheet_4
       rect:
         serializedVersion: 2
         x: 20
         y: 0
-        width: 20
-        height: 20
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 853867e1205716d40964ef4ea2e4cc16
-      internalID: -1268433392
+      spriteID: 39c56bbea0f16fb4c960bdfae63b8492
+      internalID: 977650927
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NPC_Run-Sheet_2
+      name: Blood_Particles-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 0
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: beb715b4fd2c1d3479ccedff1f929216
+      internalID: 1297587530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood_Particles-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 0
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad6aa5cd808b23041b13674a11125c42
+      internalID: -1665942506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood_Particles-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 0
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57e90337831cc3744bd4b7cc63fc7482
+      internalID: -216985285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood_Particles-Sheet_8
       rect:
         serializedVersion: 2
         x: 40
         y: 0
-        width: 20
-        height: 20
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 12e6168ef2731fb4aa3d0602a47b8fc2
-      internalID: 1706997178
+      spriteID: f496283023eb8de4d88d968c4ba8ff64
+      internalID: 469013892
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NPC_Run-Sheet_3
+      name: Blood_Particles-Sheet_9
       rect:
         serializedVersion: 2
-        x: 60
+        x: 45
         y: 0
-        width: 20
-        height: 20
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b1211029ef59cdc4db7aeba599f99f05
-      internalID: 730649289
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: NPC_Run-Sheet_4
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 0
-        width: 20
-        height: 20
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8c097a49ed0084f46b729c27b12d7edb
-      internalID: -707633101
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: NPC_Run-Sheet_5
-      rect:
-        serializedVersion: 2
-        x: 100
-        y: 0
-        width: 20
-        height: 20
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f4cb3d10a42917d4dab25ea060a4236b
-      internalID: 375013182
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: NPC_Run-Sheet_6
-      rect:
-        serializedVersion: 2
-        x: 120
-        y: 0
-        width: 20
-        height: 20
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1ab3d9a975dcee6408d15e5c119a75a4
-      internalID: 81546139
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: NPC_Run-Sheet_7
-      rect:
-        serializedVersion: 2
-        x: 140
-        y: 0
-        width: 20
-        height: 20
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 658787f5d6c1300419d49d6a32685b1b
-      internalID: -577590547
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: NPC_Run-Sheet_8
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 0
-        width: 20
-        height: 20
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 387fb73c0cbf774488b05fd26d187856
-      internalID: 1076521025
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: NPC_Run-Sheet_9
-      rect:
-        serializedVersion: 2
-        x: 180
-        y: 0
-        width: 20
-        height: 20
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c9fa5fabeb9046d41a19cc8d57e5fa70
-      internalID: -868863238
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: NPC_Run-Sheet_10
-      rect:
-        serializedVersion: 2
-        x: 200
-        y: 0
-        width: 20
-        height: 20
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ad91e3cd90c581c4d9980d92688801a9
-      internalID: 444640220
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: NPC_Run-Sheet_11
-      rect:
-        serializedVersion: 2
-        x: 220
-        y: 0
-        width: 20
-        height: 20
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 11f65c480e0474549b3a5a0e5b3b3e1e
-      internalID: 92111509
+      spriteID: 47391cc917622954f8e6b0be15a72ca4
+      internalID: -1953921961
       vertices: []
       indices: 
       edges: []
@@ -367,18 +325,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      NPC_Run-Sheet_0: 1840025328
-      NPC_Run-Sheet_9: -868863238
-      NPC_Run-Sheet_1: -1268433392
-      NPC_Run-Sheet_8: 1076521025
-      NPC_Run-Sheet_2: 1706997178
-      NPC_Run-Sheet_6: 81546139
-      NPC_Run-Sheet_4: -707633101
-      NPC_Run-Sheet_3: 730649289
-      NPC_Run-Sheet_5: 375013182
-      NPC_Run-Sheet_10: 444640220
-      NPC_Run-Sheet_11: 92111509
-      NPC_Run-Sheet_7: -577590547
+      Blood_Particles-Sheet_6: -1665942506
+      Blood_Particles-Sheet_2: 874131638
+      Blood_Particles-Sheet_9: -1953921961
+      Blood_Particles-Sheet_3: 906641947
+      Blood_Particles-Sheet_5: 1297587530
+      Blood_Particles-Sheet_8: 469013892
+      Blood_Particles-Sheet_7: -216985285
+      Blood_Particles-Sheet_4: 977650927
+      Blood_Particles-Sheet_0: 288144775
+      Blood_Particles-Sheet_1: 1980660509
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

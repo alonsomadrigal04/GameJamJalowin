@@ -11,10 +11,15 @@ public class Camera_behaviour : MonoBehaviour
 
     private Camera cam;
     private float shakeAmount = 0.0f;
+    float zoomSmoothnes = 0.05f;
+    [SerializeField] float zoomMin = 10.0f;
+    [SerializeField] float zoomMax = 20.0f;
+    float scale;
 
     private void Start()
     {
         FindPlayer();
+        scale = zoomMax;
         cam = GetComponent<Camera>();
     }
 
@@ -69,7 +74,9 @@ public class Camera_behaviour : MonoBehaviour
             if (playerBehavior != null)
             {
                 // Calcula el factor de escala en función de currentTime.
-                float scale = Mathf.Lerp(5.0f, 15.0f, playerBehavior.currentTime / playerBehavior.timer_suicideMax);
+                float targetScale = Mathf.Lerp(zoomMin, zoomMax, playerBehavior.currentTime / playerBehavior.timer_suicideMax);
+                if (scale < targetScale) scale += zoomSmoothnes;
+                if (scale > targetScale) scale -= zoomSmoothnes;
 
                 // Ajusta el tamaño de la cámara.
                 cam.orthographicSize = scale;

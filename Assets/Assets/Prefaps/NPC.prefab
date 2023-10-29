@@ -78,7 +78,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -740227089, guid: cd690b130150b6f48953067b390c002b, type: 3}
   m_Color: {r: 1, g: 0.6156863, b: 0.909804, a: 1}
   m_FlipX: 0
@@ -148,6 +148,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 34303d42fa42583499a1f1776ec9bddc, type: 3}
   - {fileID: 8300000, guid: e667c6c2c0df3d043a76e65225ca48d7, type: 3}
   audioSource: {fileID: 167884501859205297}
+  deathsCount: 0
 --- !u!95 &6599180143802358942
 Animator:
   serializedVersion: 5

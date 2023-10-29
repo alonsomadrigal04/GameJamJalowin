@@ -173,8 +173,8 @@ public class Player_behaviour : MonoBehaviour
 
                 //Cuanto mas cerca de suicidarse mas rapido
 
-                currentMoveSpeed = Mathf.Lerp(0f, moveSpeed, currentTime);
-                
+                currentMoveSpeed = Mathf.Lerp(0f, moveSpeed, 1f - (currentTime / 15f));
+
                 // Calcula el progreso como un valor entre 0 y 1 en función del tiempo restante.
                 float progress = Mathf.Clamp01(currentTime / timer_suicideMax);
 
@@ -223,17 +223,10 @@ public class Player_behaviour : MonoBehaviour
     {
         if (suiciding)
         {
-            Debug.Log("Antes de morir");
-
-
-
             yield return new WaitForSeconds(time);
-            GameObject nuevoObjeto = Instantiate(cuerpo, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
-            
+            GameObject nuevoObjeto = Instantiate(cuerpo, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);  
 
             CollectNPCsInScreen();
-
-
 
             if (npcsInScreen.Count > 0)
             {

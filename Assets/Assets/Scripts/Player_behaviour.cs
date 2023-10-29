@@ -106,7 +106,6 @@ public class Player_behaviour : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 rb.velocity = new Vector2(0, 0);
-                animatior.SetBool("Dies", true);
                 Suicide();
             }
         }
@@ -119,6 +118,7 @@ public class Player_behaviour : MonoBehaviour
     public void Suicide()
     {
         suiciding = true;
+        animatior.SetBool("Dies", true);
         if (firstTime)
         {
             StartCoroutine(Dying(firts_suicide));
@@ -138,6 +138,7 @@ public class Player_behaviour : MonoBehaviour
             {
                 currentTime -= Time.deltaTime;
 
+                
                 // Calcula el progreso como un valor entre 0 y 1 en función del tiempo restante.
                 float progress = Mathf.Clamp01(currentTime / timer_suicideMax);
 

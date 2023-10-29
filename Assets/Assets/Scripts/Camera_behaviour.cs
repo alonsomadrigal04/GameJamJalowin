@@ -60,6 +60,7 @@ public class Camera_behaviour : MonoBehaviour
         }
     }
 
+
     private void PanicScreen()
     {
         if (target != null)
@@ -77,5 +78,13 @@ public class Camera_behaviour : MonoBehaviour
                 shakeAmount = Mathf.Lerp(0, maxShakeAmount, 1.0f - playerBehavior.currentTime / playerBehavior.timer_suicideMax);
             }
         }
+    }
+
+    public IEnumerable CameraShake(float time, float intensity)
+    {
+        float lastShake = shakeAmount;
+        shakeAmount = intensity;
+        yield return new WaitForSeconds(time);
+        shakeAmount = lastShake;
     }
 }

@@ -234,6 +234,29 @@ public class NPC_Behaviour : MonoBehaviour
         SpawnParticles();
         int randomChainSoundIndex = Random.Range(0, chainSounds.Length);
         audioSource.PlayOneShot(chainSounds[randomChainSoundIndex]);
-        Destroy(gameObject);
+
+        // Cambiar la transparencia del NPC principal
+        Renderer mainRenderer = GetComponent<Renderer>();
+        if (mainRenderer != null)
+        {
+            Material mainMaterial = mainRenderer.material;
+            Color mainColor = mainMaterial.color;
+            mainColor.a = 0.0f; // Ajusta el valor a tu preferencia
+            mainMaterial.color = mainColor;
+        }
+
+        // Cambiar la transparencia de los hijos
+        Renderer[] childRenderers = GetComponentsInChildren<Renderer>();
+        foreach (Renderer childRenderer in childRenderers)
+        {
+            Material childMaterial = childRenderer.material;
+            Color childColor = childMaterial.color;
+            childColor.a = 0.0f; // Ajusta el valor a tu preferencia
+            childMaterial.color = childColor;
+        }
+
+        Destroy(gameObject, 1.0f);
     }
+
+
 }

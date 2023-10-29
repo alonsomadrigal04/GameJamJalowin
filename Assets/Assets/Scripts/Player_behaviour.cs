@@ -40,12 +40,13 @@ public class Player_behaviour : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip deathMusic;
     public AudioClip[] scaredSounds; // Array de efectos de sonido de NPC asustados
+    public AudioClip[] shootSounds;
     private List<int> playedSoundIndices = new List<int>(); // Lista para realizar un seguimiento de los índices de sonidos ya reproducidos
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        spriteRenderer = GetComponent < SpriteRenderer>();
+        spriteRenderer = GetComponent <SpriteRenderer>();
         currentTime = timer_suicideMax;
 
         if (scMenu.gameStarted)
@@ -132,9 +133,13 @@ public class Player_behaviour : MonoBehaviour
                     currentTime = timer; // Reinicia el tiempo
                     progressBar.gameObject.SetActive(true);
                 }
+
+                // Asegúrate de que currentTime no exceda el valor máximo
+                currentTime = Mathf.Min(currentTime, timer_suicideMax);
             }
         }
     }
+
 
     void CollectNPCsInScreen()
     {
@@ -161,12 +166,18 @@ public class Player_behaviour : MonoBehaviour
 
             CollectNPCsInScreen();
 
+
+
             if (npcsInScreen.Count > 0)
             {
                 GameObject randomNPC = npcsInScreen[Random.Range(0, npcsInScreen.Count)];
                 transform.position = randomNPC.transform.position;
                 Destroy(randomNPC);
                 suiciding = false;
+
+                // Reproduce un sonido aleatorio de "shootSounds"
+                int randomShootSoundIndex = Random.Range(0, shootSounds.Length);
+                audioSource.PlayOneShot(shootSounds[randomShootSoundIndex]);
 
                 progressBar.gameObject.SetActive(true);
                 cristal.gameObject.SetActive(true);
@@ -194,7 +205,7 @@ public class Player_behaviour : MonoBehaviour
                     AudioSource.PlayClipAtPoint(scaredSounds[randomSoundIndex], npc.transform.position);
 
                     currentTime = Mathf.Clamp(currentTime, 0, timer_suicideMax - 2);
-                    currentTime += (npcsInScreen.Count / 2);
+                    currentTime += (npcsInScreen.Count * 0.3f);
                 }
             }
             else

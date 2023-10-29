@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8668635143294923938}
   - component: {fileID: 4650253163449566973}
   - component: {fileID: -2321025179551777151}
+  - component: {fileID: 6599180143802358942}
   m_Layer: 0
   m_Name: NPC
   m_TagString: NPC
@@ -76,8 +77,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.8773585, g: 0.38547018, b: 0.5424012, a: 1}
+  m_Sprite: {fileID: -740227089, guid: cd690b130150b6f48953067b390c002b, type: 3}
+  m_Color: {r: 0.40943396, g: 1, b: 0.98129135, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -107,7 +108,7 @@ Rigidbody2D:
   m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 4
+  m_Constraints: 6
 --- !u!58 &4650253163449566973
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -149,3 +150,24 @@ MonoBehaviour:
   safeDistance: 3
   draggedMinDistance: 3
   scared: 0
+  animatior: {fileID: 6599180143802358942}
+--- !u!95 &6599180143802358942
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2794126296169741688}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ce731c52a497b3340b027a8faa978695, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0

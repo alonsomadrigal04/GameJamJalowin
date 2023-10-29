@@ -43,6 +43,8 @@ public class NPC_Behaviour : MonoBehaviour
     [HideInInspector] public bool scared = false;
     // Animator
     public Animator animatior;
+    public GameObject particlePrefab; // Asigna el prefab de partículas en el Inspector
+
 
     void Start()
     {
@@ -210,8 +212,21 @@ public class NPC_Behaviour : MonoBehaviour
         else inSafeZone = true;
     }
 
+    void SpawnParticles()
+    {
+        // Instancia el prefab de partículas en la posición actual y sin rotación
+        GameObject particleObject = Instantiate(particlePrefab, new Vector3(transform.position.x - 0.5f, transform.position.y + 1, transform.position.z), Quaternion.identity);
+
+        // Asegúrate de que el sistema de partículas esté emitiendo (si no se inicia automáticamente)
+        ParticleSystem particleSystem = particleObject.GetComponent<ParticleSystem>();
+        if (particleSystem != null)
+        {
+            particleSystem.Play();
+        }
+    }
     public void Death()
     {
+        SpawnParticles();
         Destroy(gameObject);
     }
 }

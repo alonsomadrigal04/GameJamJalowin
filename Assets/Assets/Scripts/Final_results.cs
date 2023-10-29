@@ -8,12 +8,11 @@ public class Final_results : MonoBehaviour
 {
     public TextMeshProUGUI pressKeyText;
     public TextMeshProUGUI score;
-    public NPC_Behaviour npcBehaviour;
 
     private void Start()
     {
         StartCoroutine(BlinkText());
-        score.text = "Have shot themselves " + npcBehaviour.deathsCount.ToString() + "people";
+        score.text = "Have shot themselves 40 people";
 
 
     }

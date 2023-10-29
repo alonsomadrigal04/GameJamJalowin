@@ -98084,6 +98084,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 728508064}
     - target: {fileID: 4088164467800165796, guid: de4ffbb173b66544e9b635f93f2ef031, type: 3}
+      propertyPath: chainsaw
+      value: 
+      objectReference: {fileID: 8300000, guid: abff7edded1e8ce46bfc507caf50767c, type: 3}
+    - target: {fileID: 4088164467800165796, guid: de4ffbb173b66544e9b635f93f2ef031, type: 3}
       propertyPath: scCamera
       value: 
       objectReference: {fileID: 519420033}
@@ -98150,6 +98154,10 @@ PrefabInstance:
     - target: {fileID: 4088164467800165796, guid: de4ffbb173b66544e9b635f93f2ef031, type: 3}
       propertyPath: blood.Array.size
       value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 4088164467800165796, guid: de4ffbb173b66544e9b635f93f2ef031, type: 3}
+      propertyPath: maxtimerBadEnding
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 4088164467800165796, guid: de4ffbb173b66544e9b635f93f2ef031, type: 3}
       propertyPath: blood.Array.data[0]
@@ -99164,6 +99172,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3007451151715501462, guid: e40c00aece5623c459cb854146bd3e4f, type: 3}
+      propertyPath: m_Volume
+      value: 0.014
+      objectReference: {fileID: 0}
     - target: {fileID: 3761169028775335442, guid: e40c00aece5623c459cb854146bd3e4f, type: 3}
       propertyPath: m_Name
       value: DeathZone

@@ -47,6 +47,7 @@ public class NPC_Behaviour : MonoBehaviour
     public AudioClip[] chainSounds;
     public AudioClip[] blood;
     public AudioSource audioSource;
+    public int deathsCount=0;
 
 
     void Start()
@@ -229,6 +230,7 @@ public class NPC_Behaviour : MonoBehaviour
     }
     public void Death()
     {
+        deathsCount++;
         SpawnParticles();
         int randomChainSoundIndex = Random.Range(0, chainSounds.Length);
         audioSource.PlayOneShot(chainSounds[randomChainSoundIndex]);

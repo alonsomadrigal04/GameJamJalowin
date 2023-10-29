@@ -148,6 +148,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 34303d42fa42583499a1f1776ec9bddc, type: 3}
   - {fileID: 8300000, guid: e667c6c2c0df3d043a76e65225ca48d7, type: 3}
   audioSource: {fileID: 167884501859205297}
+  deathsCount: 0
 --- !u!95 &6599180143802358942
 Animator:
   serializedVersion: 5
@@ -206,13 +207,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.791
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 180
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500

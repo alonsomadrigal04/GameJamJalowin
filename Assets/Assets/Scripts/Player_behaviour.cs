@@ -49,12 +49,19 @@ public class Player_behaviour : MonoBehaviour
     //------- ANIMATOR ------- 
     public Animator animatior;
     public GameObject cuerpo;
+    public Color baseColor;
+    public Color finalColor; 
+
+
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent <SpriteRenderer>();
         currentTime = timer_suicideMax;
+
+        // Establece el color inicial del personaje
+        spriteRenderer.color = baseColor;
 
         if (scMenu.gameStarted)
         {
@@ -75,7 +82,24 @@ public class Player_behaviour : MonoBehaviour
         {
             Suicide_bar();
             CheckWin();
+            ChangeColorBasedOnTime(); 
+
         }
+    }
+
+    void ChangeColorBasedOnTime()
+    {
+        // Asegúrate de que currentTime esté en el rango de [0, timer_suicideMax]
+        currentTime = Mathf.Clamp(currentTime, 0, timer_suicideMax);
+
+        // Calcula el progreso como un valor entre 0 y 1 en función del tiempo restante.
+        float progress = 1.0f - (currentTime / timer_suicideMax); // Invierte el progreso para que esté relacionado con el tiempo restante
+
+        // Interpola gradualmente entre el color base y el color final
+        Color lerpedColor = Color.Lerp(baseColor, finalColor, progress);
+
+        // Establece el color del spriteRenderer
+        spriteRenderer.color = lerpedColor;
     }
 
     void MovePlayer()
@@ -121,6 +145,8 @@ public class Player_behaviour : MonoBehaviour
         animatior.SetBool("Dies", true);
         if (firstTime)
         {
+            scCamera.ZoomInOnDeath(); // Llama a la función en la cámara para hacer el zoom
+
             StartCoroutine(Dying(firts_suicide));
             firstTime = false;
         }
@@ -146,6 +172,9 @@ public class Player_behaviour : MonoBehaviour
                 float currentWidth = maxProgressBarWidth * progress; // Asigna el valor a currentWidth
 
                 progressBar.transform.localScale = new Vector3(currentWidth, progressBar.transform.localScale.y, progressBar.transform.localScale.z);
+
+                // Interpola entre el color inicial y el color final basado en el progreso.
+                spriteRenderer.color = Color.Lerp(baseColor, finalColor, progress);
 
                 // Comprueba si el temporizador ha terminado
                 if (currentTime <= 0)

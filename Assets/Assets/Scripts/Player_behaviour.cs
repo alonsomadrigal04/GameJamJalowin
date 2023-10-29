@@ -18,7 +18,7 @@ public class Player_behaviour : MonoBehaviour
 
     // ------- SUICIDE_BAR -------
     [SerializeField] float timer;
-    public float currentTime;
+    [HideInInspector] public float currentTime;
     [SerializeField] float maxProgressBarWidth = 1.0f;
     [SerializeField] Image progressBar;
     [SerializeField] Image cristal;
@@ -37,11 +37,17 @@ public class Player_behaviour : MonoBehaviour
     public bool gameOver = false;
 
     // ------- SOUNDS -------
-    public AudioSource audioSource;
-    public AudioClip deathMusic;
+    [HideInInspector] public AudioSource audioSource;
+    [HideInInspector] public AudioClip deathMusic;
     public AudioClip[] scaredSounds; // Array de efectos de sonido de NPC asustados
     public AudioClip[] shootSounds;
     private List<int> playedSoundIndices = new List<int>(); // Lista para realizar un seguimiento de los índices de sonidos ya reproducidos
+
+    //------- CAMERA -------
+    public Camera_behaviour scCamera;
+
+    //------- ANIMATOR ------- 
+    public Animator animatior;
 
     void Start()
     {
@@ -170,6 +176,7 @@ public class Player_behaviour : MonoBehaviour
 
             if (npcsInScreen.Count > 0)
             {
+                scCamera.CameraShake(0.3f, 1000.0f);
                 GameObject randomNPC = npcsInScreen[Random.Range(0, npcsInScreen.Count)];
                 transform.position = randomNPC.transform.position;
                 Destroy(randomNPC);

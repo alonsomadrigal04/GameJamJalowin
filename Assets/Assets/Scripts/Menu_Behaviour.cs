@@ -7,7 +7,6 @@ public class Menu_Behaviour : MonoBehaviour
 {
     [SerializeField] Image backgroundImage;
     [SerializeField] float fadeSpeed = 1.0f;
-    [SerializeField] float startDelay = 1.0f;
     public TextMeshProUGUI pressKeyText;
 
     public bool gameStarted = false;
@@ -61,6 +60,7 @@ public class Menu_Behaviour : MonoBehaviour
         // Fade In de la música de metal
         audioSource.clip = metalMusic;
         audioSource.Play();
+        while (audioSource.volume < 0.07)
         while (audioSource.volume < 0.07)
         {
             audioSource.volume += fadeSpeed * Time.deltaTime;

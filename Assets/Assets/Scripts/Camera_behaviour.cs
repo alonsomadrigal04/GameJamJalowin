@@ -12,7 +12,7 @@ public class Camera_behaviour : MonoBehaviour
     private Camera cam;
     private float shakeAmount = 0.0f;
     float zoomSmoothnes = 0.05f;
-    [SerializeField] float zoomMin = 10.0f;
+    [SerializeField] float zoomMin = 15.0f;
     [SerializeField] float zoomMax = 20.0f;
     float scale;
 

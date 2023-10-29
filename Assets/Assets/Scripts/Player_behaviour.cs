@@ -158,7 +158,7 @@ public class Player_behaviour : MonoBehaviour
             rb.velocity = Vector2.zero;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (!suiciding && Input.GetKeyDown(KeyCode.Space))
         {
             rb.velocity = new Vector2(0, 0);
             Suicide();
@@ -293,7 +293,7 @@ public class Player_behaviour : MonoBehaviour
                     AudioSource.PlayClipAtPoint(scaredSounds[randomSoundIndex], npc.transform.position);
 
                     currentTime = Mathf.Clamp(currentTime, 0, timer_suicideMax - 2);
-                    if (npcsInScreen.Count > 0) currentTime += 2;
+                    currentTime += 1;
                     currentTime += (npcsInScreen.Count * 0.5f);
                 }
 

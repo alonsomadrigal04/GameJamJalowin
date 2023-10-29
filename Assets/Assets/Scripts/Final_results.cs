@@ -24,7 +24,7 @@ public class Final_results : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             // Carga la escena "Game"
-            SceneManager.LoadScene("Alonso's_Scene");
+            SceneManager.LoadScene("GameRoom");
         }
     }
 

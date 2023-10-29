@@ -9,6 +9,7 @@ public class NPC_Spawner : MonoBehaviour
 
     void Start()
     {
+        DontDestroyOnLoad(gameObject);
         Spawn(npcPrefab, npcAmount, spawnWidth, spawnHeight);
     }
 

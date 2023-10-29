@@ -124,14 +124,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkSpeed: 1
-  runSpeed: 4
+  runSpeed: 5
   dragSpeed: 8
-  minWalkTime: 1
-  maxWalkTime: 3
+  minWalkTime: 0.5
+  maxWalkTime: 5
   minIdleTime: 1
-  maxIdleTime: 3
-  minRunningTime: 3
-  maxRunningTime: 7
+  maxIdleTime: 5
+  minRunningTime: 2
+  maxRunningTime: 4
   unsafeSeconds: 0.2
   safeDistance: 3
   draggedMinDistance: 3

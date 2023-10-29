@@ -153,6 +153,8 @@ MonoBehaviour:
   scCamera: {fileID: 0}
   animatior: {fileID: 7730281747776350601}
   cuerpo: {fileID: 4642152340598953370, guid: 885a514d63b74104581c8ec00d992cf4, type: 3}
+  baseColor: {r: 1, g: 0.6156863, b: 0.909804, a: 1}
+  finalColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!95 &7730281747776350601
 Animator:
   serializedVersion: 5

@@ -78,7 +78,29 @@ public class Camera_behaviour : MonoBehaviour
                 shakeAmount = Mathf.Lerp(0, maxShakeAmount, 1.0f - playerBehavior.currentTime / playerBehavior.timer_suicideMax);
             }
         }
+        
     }
+
+    public void ZoomInOnDeath()
+    {
+        StartCoroutine(ZoomInCoroutine(2.0f, 2.0f)); // Ajusta la duración y la escala de zoom como desees
+    }
+
+    private IEnumerator ZoomInCoroutine(float duration, float targetScale)
+    {
+        float initialScale = cam.orthographicSize;
+        float startTime = Time.time;
+
+        while (Time.time - startTime < duration)
+        {
+            float t = (Time.time - startTime) / duration;
+            cam.orthographicSize = Mathf.Lerp(initialScale, targetScale, t);
+            yield return null;
+        }
+
+        cam.orthographicSize = targetScale;
+    }
+
 
     public IEnumerable CameraShake(float time, float intensity)
     {

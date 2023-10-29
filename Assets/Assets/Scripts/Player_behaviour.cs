@@ -9,6 +9,7 @@ public class Player_behaviour : MonoBehaviour
 {
     // ------- MOVEMENT -------
     public float moveSpeed;
+    float currentMoveSpeed;
 
     // ------- SUICIDE -------
     public bool suiciding;
@@ -129,7 +130,7 @@ public class Player_behaviour : MonoBehaviour
                 // Voltea el sprite verticalmente
                 transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x) * flipDirection, transform.localScale.y, transform.localScale.z);
 
-                rb.velocity = new Vector2(dir.x * moveSpeed, dir.y * moveSpeed); // Multiplica dir.x y dir.y por moveSpeed
+                rb.velocity = new Vector2(dir.x * currentMoveSpeed, dir.y * currentMoveSpeed); // Multiplica dir.x y dir.y por moveSpeed
 
                 // Si quieres mantener el eje X constante, no necesitas modificar la rotación en este caso.
             }
@@ -140,6 +141,7 @@ public class Player_behaviour : MonoBehaviour
                 Suicide();
             }
         }
+        else rb.velocity = Vector2.zero;
     }
 
 
@@ -169,6 +171,9 @@ public class Player_behaviour : MonoBehaviour
             {
                 currentTime -= Time.deltaTime;
 
+                //Cuanto mas cerca de suicidarse mas rapido
+
+                currentMoveSpeed = Mathf.Lerp(0f, moveSpeed, currentTime);
                 
                 // Calcula el progreso como un valor entre 0 y 1 en función del tiempo restante.
                 float progress = Mathf.Clamp01(currentTime / timer_suicideMax);
@@ -271,7 +276,8 @@ public class Player_behaviour : MonoBehaviour
                     AudioSource.PlayClipAtPoint(scaredSounds[randomSoundIndex], npc.transform.position);
 
                     currentTime = Mathf.Clamp(currentTime, 0, timer_suicideMax - 2);
-                    currentTime += (npcsInScreen.Count * 0.3f);
+                    if (npcsInScreen.Count > 0) currentTime += 2;
+                    currentTime += (npcsInScreen.Count * 0.5f);
                 }
             }
             else

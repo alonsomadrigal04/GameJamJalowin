@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Tilemaps;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -45,12 +46,18 @@ public class Player_behaviour : MonoBehaviour
 
     //------- CAMERA -------
     public Camera_behaviour scCamera;
+    public Camera cam;
 
     //------- ANIMATOR ------- 
     public Animator animatior;
+    public Animator bloodAnimator;
     public GameObject cuerpo;
+    public GameObject bloodAnimation;
+    public GameObject[] blood;
     public Color baseColor;
-    public Color finalColor; 
+    public Color finalColor;
+    public GameObject particlePrefab; // Asigna el prefab de partículas en el Inspector
+
 
 
 
@@ -145,8 +152,6 @@ public class Player_behaviour : MonoBehaviour
         animatior.SetBool("Dies", true);
         if (firstTime)
         {
-            scCamera.ZoomInOnDeath(); // Llama a la función en la cámara para hacer el zoom
-
             StartCoroutine(Dying(firts_suicide));
             firstTime = false;
         }
@@ -181,6 +186,7 @@ public class Player_behaviour : MonoBehaviour
                 {
                     suiciding = true;
                     Suicide();
+                    rb.velocity = new Vector2(0,0);
                     currentTime = timer; // Reinicia el tiempo
                     progressBar.gameObject.SetActive(true);
                 }
@@ -226,10 +232,13 @@ public class Player_behaviour : MonoBehaviour
 
             if (npcsInScreen.Count > 0)
             {
+                int randomBloodMarck = Random.Range(0, blood.Length);
+                GameObject nuevoObjeto1 = Instantiate(blood[randomBloodMarck], new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
                 scCamera.CameraShake(0.3f, 1000.0f);
                 GameObject randomNPC = npcsInScreen[Random.Range(0, npcsInScreen.Count)];
                 transform.position = randomNPC.transform.position;
                 Destroy(randomNPC);
+
                 suiciding = false;
 
                 
@@ -281,16 +290,32 @@ public class Player_behaviour : MonoBehaviour
 
     public void ShootingSounds()
     {
+
         int randomShootSoundIndex = Random.Range(0, shootSounds.Length);
         audioSource.PlayOneShot(shootSounds[randomShootSoundIndex]);
-
+        GameObject nuevoObjeto2 = Instantiate(bloodAnimation, new Vector3(transform.position.x - 0.5f, transform.position.y +1, transform.position.z), Quaternion.identity);
+        SpawnParticles();
     }
+    void SpawnParticles()
+    {
+        // Instancia el prefab de partículas en la posición actual y sin rotación
+        GameObject particleObject = Instantiate(particlePrefab, new Vector3(transform.position.x - 0.5f, transform.position.y + 1, transform.position.z), Quaternion.identity);
+
+        // Asegúrate de que el sistema de partículas esté emitiendo (si no se inicia automáticamente)
+        ParticleSystem particleSystem = particleObject.GetComponent<ParticleSystem>();
+        if (particleSystem != null)
+        {
+            particleSystem.Play();
+        }
+    }
+
 
     private void CheckWin()
     {
         if (AreAllNPCsCollected())
         {
             // El jugador ganó, carga la escena "winscreen"
+            Suicide();
             SceneManager.LoadScene("winscreen");
         }
     }

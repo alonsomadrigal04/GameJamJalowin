@@ -152,7 +152,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 6cce9c3c98cc70a4398a0d3686332b19, type: 3}
   scCamera: {fileID: 0}
   animatior: {fileID: 7730281747776350601}
+  bloodAnimator: {fileID: 0}
   cuerpo: {fileID: 4642152340598953370, guid: 885a514d63b74104581c8ec00d992cf4, type: 3}
+  bloodAnimation: {fileID: 0}
+  blood: []
   baseColor: {r: 1, g: 0.6156863, b: 0.909804, a: 1}
   finalColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!95 &7730281747776350601

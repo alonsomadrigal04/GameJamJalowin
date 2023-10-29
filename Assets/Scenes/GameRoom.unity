@@ -99052,7 +99052,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2774746118174384670, guid: 7a27c0f3b1fdad14caf7d09e80f1b1c5, type: 3}
       propertyPath: npcAmount
-      value: 1
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 2774746118174384670, guid: 7a27c0f3b1fdad14caf7d09e80f1b1c5, type: 3}
       propertyPath: spawnWidth

@@ -56,11 +56,9 @@ public class Camera_behaviour : MonoBehaviour
 
         if (shakeAmount > 0)
         {
-            // Aplica la sacudida a la posición de la cámara
             Vector2 shakeOffset = Random.insideUnitCircle * shakeAmount;
             transform.position += new Vector3(shakeOffset.x, shakeOffset.y, 0);
 
-            // Reduce gradualmente la intensidad de la sacudida
             shakeAmount -= Time.deltaTime * shakeSpeed;
         }
     }
@@ -81,14 +79,21 @@ public class Camera_behaviour : MonoBehaviour
                 // Ajusta el tamaño de la cámara.
                 cam.orthographicSize = scale;
 
-                // Aumenta la intensidad de la sacudida en función de currentTime.
                 shakeAmount = Mathf.Lerp(0, maxShakeAmount, 1.0f - playerBehavior.currentTime / playerBehavior.timer_suicideMax);
             }
         }
         
     }
 
-    
+    public void ZoomIn(float intensity, float time)
+    {
+        Vector3 cameraPosition = transform.position;
+        Vector3 targetPosition = target.position;
+        Vector3 smoothPosition = Vector3.Lerp(cameraPosition, targetPosition, smoothness * Time.deltaTime);
+
+        transform.position = new Vector3(smoothPosition.x, smoothPosition.y, cameraPosition.z);
+        
+    }
 
 
     public IEnumerable CameraShake(float time, float intensity)
